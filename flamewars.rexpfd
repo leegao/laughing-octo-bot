@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<rexpfd>
+    <destination path="Sasha20.csug02.csuglab.cornell.edu:/home/lg342/pa3"/>
+    <options createDirectoryStructure="false" createSelectedOnly="true" descriptionFilePath="/flamewars/flamewars.rexpfd" overWriteExistingFiles="true" saveSettings="true"/>
+    <selectedElements>
+        <project name="flamewars"/>
+    </selectedElements>
+</rexpfd>

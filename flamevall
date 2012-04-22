@@ -1,0 +1,36 @@
+#!/bin/bash
+
+if [ $# -lt 2 ]; then
+  echo "usage: flamevall [options] <trollname> <dirname>" 1>&2
+  echo "   runs <trollname> against everything else in the <dirname> directory" 1>&2
+  exit 1
+fi
+
+dir=${@:$#:1}
+troll=${@:$(($#-1)):1}
+options=${@:1:$(($#-2))}
+
+echo "Playing ${troll} against everything else in ${dir} ..."
+
+# path to sim is same as to this script, with flamevall replaced by flamewar
+simulator=${0%flamevall}flamewar
+
+for othertroll in ${dir}/*; do
+  if [ ! -x $othertroll ]; then
+    # skip non-executable files
+    continue
+  fi
+  if [ "$othertroll" = "$troll" ]; then
+    # skip the troll itself
+    continue
+  fi
+  echo "Playing $troll vs. $othertroll:"
+  $simulator $options $troll $othertroll
+
+  echo
+
+  echo "Playing $othertroll vs. $troll:"
+  $simulator $options $othertroll $troll
+
+  echo
+done

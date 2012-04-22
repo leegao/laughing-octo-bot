@@ -1,0 +1,7 @@
+#!/bin/sh
+
+if [ $(uname -m) = "i686" ]; then
+  exec $(dirname $0)/flamewar32 $*
+else
+  exec $(dirname $0)/flamewar64 $*
+fi
