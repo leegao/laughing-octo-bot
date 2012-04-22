@@ -55,7 +55,14 @@ void __start(int core_id, int num_crashes, unsigned char link) {
 				ptr[i] = link;
 				ptr[20+i] = link;
 				ptr[40+i++] = link;
-				if (i == 16){
+//				if (i==5){
+//
+//				}
+				if (i == 14){
+					register char x = ptr[120];
+					if (core_id == 1 && x == link){
+						puts("\n");
+					}
 					ptr += 2*CACHE_LINE;
 					i = 1;
 					ptr[0] = link;
@@ -74,19 +81,26 @@ void __start(int core_id, int num_crashes, unsigned char link) {
 				ptr[82+i] = link;
 				ptr[100+i++] = link;
 				//ptr = (char*)rdctag(ptr);
-				if (i==11){
+				if (i==10){
 					char* tag = (char*)rdftag(where);
 					ptr = tag ? tag : ptr + 2*CACHE_LINE;
 					//ptr = ptr + 2*CACHE_LINE;// + 2*CACHE_LINE;
 					i = 0;
-					if (k++ == 10){
+					if (core_id == 3 && k++ == 10){
 						k = 0;
 						// check stall performance
-						register unsigned long long delta = rdperf(PERF_CSC)-stalls;
-						stalls += delta;
-						//if (delta > 400){
-							//printf("NOOO!\n");
-						//}
+//						register unsigned long long delta = rdperf(PERF_CSC)-stalls;
+//						stalls += delta;
+//						if (delta > 400){
+//
+//						}
+						// go into taunt checking mode
+						ptr[120] = link;
+						for (i = 0; i < TAUNT_SIZE; i++) {
+							if (HOME_STATUS->taunt[i] >= 0) {
+//							  hammer(HOME_STATUS->taunt[i]);
+							}
+						}
 					}
 				}
 			}
