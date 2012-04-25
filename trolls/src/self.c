@@ -17,7 +17,7 @@ void __start(int core_id, int num_crashes, unsigned char link) {
 	// core1 = line 1
 	// at a rate of (247/248)^175 \approx 0.5, we can 'safely' be in troll mode
 	// approximately 175 cycles if we detect the taunt array on one of the lines
-	register char *ptr = (char *)(HOME_DATA_SEGMENT) + (core_id&1)*CACHE_LINE;
+	register char *ptr = (char *)(HOME_DATA_SEGMENT) + (core_id&1)*CACHE_LINE+1;
 	prefetch(ptr);
 	register int VADDR = (int)(ptr-(rdftag(ptr)-1));
 	register int i = 0;
@@ -58,7 +58,6 @@ void __start(int core_id, int num_crashes, unsigned char link) {
 				if (i == 14){
 					register char x = ptr[120];
 					if (core_id == 1 && x == link){
-						//puts("HERE\n");
 						for (k = TAUNT_SIZE/2; k < TAUNT_SIZE; k++) {
 							if (HOME_STATUS->taunt[k] >= 0) {
 							  hammer(HOME_STATUS->taunt[k]);
@@ -82,7 +81,6 @@ void __start(int core_id, int num_crashes, unsigned char link) {
 				ptr[71+i] = link;
 				ptr[82+i] = link;
 				ptr[100+i++] = link;
-				//ptr = (char*)rdctag(ptr);
 				if (i==10){
 					char* tag = (char*)rdftag(where);
 					ptr = tag ? tag : ptr + 2*CACHE_LINE;
