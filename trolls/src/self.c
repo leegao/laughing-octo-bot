@@ -20,7 +20,7 @@ void __start(int core_id, int num_crashes, unsigned char link) {
 	// approximately 175 cycles if we detect the taunt array on one of the lines
 	register char *ptr = (char *)(HOME_DATA_SEGMENT) + (core_id&1)*CACHE_LINE;
 	prefetch(ptr);
-	register int HI = rdftag(ptr)>=HIMEM ? HIMEM : 0;
+	register int h = 0;
 	register int i = 0;
 	register int k = ptr[0] == link;
 	if (k){
@@ -84,8 +84,6 @@ void __start(int core_id, int num_crashes, unsigned char link) {
 				}
 			}
 		} else if (core_id == 2){
-			//register unsigned long long stalls = 0;
-			//register char* where = ptr;
 			while(1){
 				ptr[60+i] = link;
 				ptr[71+i] = link;
@@ -93,19 +91,12 @@ void __start(int core_id, int num_crashes, unsigned char link) {
 				ptr[100+i++] = link;
 				if (i==11){
 					i = 0;
-//					register char* tag = (char*)rdftag(ptr);
-//					ptr = tag ? cache_align(tag)-HI : ptr + 2*CACHE_LINE;
 					register unsigned int tag = cache_align(rdftag(ptr));
-					//printf("%x\n",tag);
 					ptr = tag > HOME_DATA_START && tag < HOME_DATA_END ? tag: ptr + 2*CACHE_LINE;
 				}
 			}
 		} else {
-			//ptr = (char *)(HOME_DATA_SEGMENT) + (core_id&1)*CACHE_LINE;
-			//printf("%x\n",VADDR|(int)ptr);
 			k = 0;
-			//register unsigned long long stalls = 0;
-			//register char* where = (char*)(VADDR |(int)ptr);
 			while(1){
 				ptr[60+i] = link;
 				ptr[71+i] = link;
@@ -113,17 +104,27 @@ void __start(int core_id, int num_crashes, unsigned char link) {
 				ptr[100+i++] = link;
 				if (i==10){
 					i = 0;
-					if (k++ == 20){
+					if (k++ == 25){
 						ptr[120] = link;
 						for (k = 0; k < TAUNT_SIZE/2; k++) {
 							if (HOME_STATUS->taunt[k] >= 0) {
 								hammer(HOME_STATUS->taunt[k]);
 							}
 						}
+						// do a simple attack on fbi
+						h++;
+						if (h % 3 == 0){
+							troll();
+							retreat();
+						} else if (h == 100) {
+							// actually do an attack
+							// check if rdctag(ptr|HIOLO) is in the taunt array, if not, fuck their odd cache line + 6*CACHELINE up
+							// otherwise
+							h = 0;
+						}
 						k = 0;
 					}
 					register unsigned int tag = cache_align(rdftag(ptr));
-					//printf("%x\n",tag);
 					ptr = tag > HOME_DATA_START && tag < HOME_DATA_END ? tag: ptr + 2*CACHE_LINE;
 				}
 			}

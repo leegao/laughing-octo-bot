@@ -6320,6 +6320,7 @@
 [core 0.1] 0x000004b4: sll $0, $0, 0
 [core 0.1] 0x000004b0: j 0x000004b0
 [core 0.1] 0x000004b4: sll $0, $0, 0
+[cache] cache line 3 filled from paddr=0x80106100 (vaddr=0x80106100 for core 0.1)
 [core 0.1] 0x000004b0: j 0x000004b0
 [core 0.1] 0x000004b4: sll $0, $0, 0
 [core 0.1] 0x000004b0: j 0x000004b0
@@ -10185,6 +10186,7 @@
 [core 0.1] 0x000004b0: j 0x000004b0
 [core 0.1] 0x000004b4: sll $0, $0, 0
 [core 0.1] 0x000004b0: j 0x000004b0
+[cache] cache line 3 filled from paddr=0x80109700 (vaddr=0x80109700 for core 0.1)
 [core 0.1] 0x000004b4: sll $0, $0, 0
 [core 0.1] 0x000004b0: j 0x000004b0
 [core 0.1] 0x000004b4: sll $0, $0, 0
@@ -10198,7 +10200,6 @@
 [core 0.1] 0x000004b4: sll $0, $0, 0
 [core 0.1] 0x000004b0: j 0x000004b0
 [core 0.1] 0x000004b4: sll $0, $0, 0
-[cache] cache line 3 filled from paddr=0x80108500 (vaddr=0x80108500 for core 0.1)
 [core 0.1] 0x000004b0: j 0x000004b0
 [core 0.1] 0x000004b4: sll $0, $0, 0
 [core 0.1] 0x000004b0: j 0x000004b0
@@ -10628,7 +10629,6 @@
 [core 0.1] 0x000004b0: j 0x000004b0
 [core 0.1] 0x000004b4: sll $0, $0, 0
 [core 0.1] 0x000004b0: j 0x000004b0
-[cache] cache line 3 filled from paddr=0x80108d00 (vaddr=0x80108d00 for core 0.1)
 [core 0.1] 0x000004b4: sll $0, $0, 0
 [core 0.1] 0x000004b0: j 0x000004b0
 [core 0.1] 0x000004b4: sll $0, $0, 0
@@ -10736,7 +10736,6 @@
 [core 0.1] 0x000004b4: sll $0, $0, 0
 [core 0.1] 0x000004b0: j 0x000004b0
 [core 0.1] 0x000004b4: sll $0, $0, 0
-[cache] cache line 3 filled from paddr=0x80108f00 (vaddr=0x80108f00 for core 0.1)
 [core 0.1] 0x000004b0: j 0x000004b0
 [core 0.1] 0x000004b4: sll $0, $0, 0
 [core 0.1] 0x000004b0: j 0x000004b0
@@ -12236,6 +12235,7 @@
 [core 0.1] 0x000004b4: sll $0, $0, 0
 [core 0.1] 0x000004b0: j 0x000004b0
 [core 0.1] 0x000004b4: sll $0, $0, 0
+[cache] cache line 3 filled from paddr=0x8010ab00 (vaddr=0x8010ab00 for core 0.1)
 [core 0.1] 0x000004b0: j 0x000004b0
 [core 0.1] 0x000004b4: sll $0, $0, 0
 [core 0.1] 0x000004b0: j 0x000004b0

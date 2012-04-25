@@ -9,38 +9,38 @@ Program Header:
 0x70000000 off    0x00000494 vaddr 0x00000494 paddr 0x00000494 align 2**2
          filesz 0x00000018 memsz 0x00000018 flags r--
     LOAD off    0x00000000 vaddr 0x00000000 paddr 0x00000000 align 2**16
-         filesz 0x00000890 memsz 0x00000890 flags r-x
+         filesz 0x000008e0 memsz 0x000008e0 flags r-x
 private flags = 1001: [abi=O32] [mips1] [not 32bitmode]
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
   0 .reginfo      00000018  00000494  00000494  00000494  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, DATA, LINK_ONCE_DISCARD
-  1 .text         000003e0  000004b0  000004b0  000004b0  2**4
+  1 .text         00000430  000004b0  000004b0  000004b0  2**4
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .comment      00000012  00000000  00000000  00000890  2**0
+  2 .comment      00000012  00000000  00000000  000008e0  2**0
                   CONTENTS, READONLY
-  3 .debug_aranges 00000020  00000000  00000000  000008a2  2**0
+  3 .debug_aranges 00000020  00000000  00000000  000008f2  2**0
                   CONTENTS, READONLY, DEBUGGING
-  4 .debug_pubnames 0000001e  00000000  00000000  000008c2  2**0
+  4 .debug_pubnames 0000001e  00000000  00000000  00000912  2**0
                   CONTENTS, READONLY, DEBUGGING
-  5 .debug_info   00000367  00000000  00000000  000008e0  2**0
+  5 .debug_info   0000036b  00000000  00000000  00000930  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_abbrev 00000136  00000000  00000000  00000c47  2**0
+  6 .debug_abbrev 00000154  00000000  00000000  00000c9b  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_line   0000013a  00000000  00000000  00000d7d  2**0
+  7 .debug_line   0000014c  00000000  00000000  00000def  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_frame  00000020  00000000  00000000  00000eb8  2**2
+  8 .debug_frame  00000020  00000000  00000000  00000f3c  2**2
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_str    0000009b  00000000  00000000  00000ed8  2**0
+  9 .debug_str    000000a9  00000000  00000000  00000f5c  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_loc    0000031e  00000000  00000000  00000f73  2**0
+ 10 .debug_loc    000002ea  00000000  00000000  00001005  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .mdebug.abi32 00000000  0000031e  0000031e  00001291  2**0
+ 11 .mdebug.abi32 00000000  000002ea  000002ea  000012ef  2**0
                   CONTENTS, READONLY
- 12 .pdr          00000020  00000000  00000000  00001294  2**2
+ 12 .pdr          00000020  00000000  00000000  000012f0  2**2
                   CONTENTS, READONLY
- 13 .debug_ranges 00000048  00000000  00000000  000012b4  2**0
+ 13 .debug_ranges 00000048  00000000  00000000  00001310  2**0
                   CONTENTS, READONLY, DEBUGGING
 SYMBOL TABLE:
 00000494 l    d  .reginfo	00000000 .reginfo
@@ -54,21 +54,21 @@ SYMBOL TABLE:
 00000000 l    d  .debug_frame	00000000 .debug_frame
 00000000 l    d  .debug_str	00000000 .debug_str
 00000000 l    d  .debug_loc	00000000 .debug_loc
-0000031e l    d  .mdebug.abi32	00000000 .mdebug.abi32
+000002ea l    d  .mdebug.abi32	00000000 .mdebug.abi32
 00000000 l    d  .pdr	00000000 .pdr
 00000000 l    d  .debug_ranges	00000000 .debug_ranges
 00000000 l    d  *ABS*	00000000 .shstrtab
 00000000 l    d  *ABS*	00000000 .symtab
 00000000 l    d  *ABS*	00000000 .strtab
 00000000 l    df *ABS*	00000000 src/self.c
-00100890 g       *ABS*	00000000 _fdata
-00108880 g       *ABS*	00000000 _gp
-000004b0 g     F .text	000003d8 __start
+001008e0 g       *ABS*	00000000 _fdata
+001088d0 g       *ABS*	00000000 _gp
+000004b0 g     F .text	0000042c __start
 000004b0 g       .text	00000000 _ftext
-00100890 g       *ABS*	00000000 __bss_start
-00100890 g       *ABS*	00000000 _edata
-00100890 g       *ABS*	00000000 _end
-00100890 g       *ABS*	00000000 _fbss
+001008e0 g       *ABS*	00000000 __bss_start
+001008e0 g       *ABS*	00000000 _edata
+001008e0 g       *ABS*	00000000 _end
+001008e0 g       *ABS*	00000000 _fbss
 
 
 Disassembly of section .text:
@@ -100,72 +100,17 @@ src/flamewar.h:440
   asm __volatile__ (
  4cc:	2402000e 	li	v0,14
  4d0:	0000000c 	syscall
-rdftag():
-src/flamewar.h:491
-      "addiu $2, $0, 14\n\t"
-      "syscall"
-      :
-      : "r" (arg)
-      : "v0"
-      );
-}
-
-__attribute__ ((unused)) static void invalidate(void *ptr) {
-  /* invoke system call number 15 */
-  register void *arg asm("a0") = ptr;
-  asm __volatile__ (
-      "addiu $2, $0, 15\n\t"
-      "syscall"
-      :
-      : "r" (arg)
-      : "v0"
-      );
-}
-
-__attribute__ ((unused)) static unsigned long long rdperf(int counter_id) {
-  /* invoke system call number 16 */
-  register int arg asm("a0") = counter_id;
-  register long long ret asm("v0");
-  asm __volatile__ (
-      "addiu $2, $0, 16\n\t"
-      "syscall"
-      : "=r" (ret)
-      : "r" (arg)
-      );
-  return ret;
-}
-
-__attribute__ ((unused)) static unsigned int rdctag(void *ptr) {
-  /* invoke system call number 17 */
-  register unsigned int ret asm("v0");
-  register void *arg asm("a0") = ptr;
-  asm __volatile__ (
-      "addiu $2, $0, 17\n\t"
-      "syscall"
-      : "=r" (ret)
-      : "r" (arg)
-      );
-  return ret;
-}
-
-__attribute__ ((unused)) static unsigned int rdftag(void *ptr) {
-  /* invoke system call number 18 */
-  register unsigned int ret asm("v0");
-  register void *arg asm("a0") = ptr;
-  asm __volatile__ (
- 4d4:	24020012 	li	v0,18
- 4d8:	0000000c 	syscall
 __start():
 src/self.c:26
 	prefetch(ptr);
-	register int HI = rdftag(ptr)>=HIMEM ? HIMEM : 0;
+	register int h = 0;
 	register int i = 0;
 	register int k = ptr[0] == link;
 	if (k){
- 4dc:	81030000 	lb	v1,0(t0)
- 4e0:	00000000 	nop
- 4e4:	106600b0 	beq	v1,a2,7a8 <__start+0x2f8>
- 4e8:	28a20002 	slti	v0,a1,2
+ 4d4:	81030000 	lb	v1,0(t0)
+ 4d8:	00000000 	nop
+ 4dc:	106600c7 	beq	v1,a2,7fc <__start+0x34c>
+ 4e0:	28a20002 	slti	v0,a1,2
 src/self.c:53
 		if (core_id < 2){
 			while(1){
@@ -194,55 +139,55 @@ src/self.c:53
 		}
 	} else {
 		if (!core_id){
- 4ec:	14a0001d 	bnez	a1,564 <__start+0xb4>
- 4f0:	24020001 	li	v0,1
+ 4e4:	14a0001d 	bnez	a1,55c <__start+0xac>
+ 4e8:	24020001 	li	v0,1
 src/self.c:55
 			while(1){
 				ptr[i] = link;
- 4f4:	00063600 	sll	a2,a2,0x18
- 4f8:	00063603 	sra	a2,a2,0x18
- 4fc:	25030002 	addiu	v1,t0,2
- 500:	25020001 	addiu	v0,t0,1
- 504:	a1060000 	sb	a2,0(t0)
+ 4ec:	00063600 	sll	a2,a2,0x18
+ 4f0:	00063603 	sra	a2,a2,0x18
+ 4f4:	25030002 	addiu	v1,t0,2
+ 4f8:	25020001 	addiu	v0,t0,1
+ 4fc:	a1060000 	sb	a2,0(t0)
 src/self.c:56
 				ptr[20+i] = link;
- 508:	a1060014 	sb	a2,20(t0)
+ 500:	a1060014 	sb	a2,20(t0)
 src/self.c:57
 				ptr[40+i++] = link;
- 50c:	a1060028 	sb	a2,40(t0)
+ 504:	a1060028 	sb	a2,40(t0)
 src/self.c:55
- 510:	a1060001 	sb	a2,1(t0)
- 514:	24050010 	li	a1,16
+ 508:	a1060001 	sb	a2,1(t0)
+ 50c:	24050010 	li	a1,16
 src/self.c:57
- 518:	a0460028 	sb	a2,40(v0)
+ 510:	a0460028 	sb	a2,40(v0)
 src/self.c:56
- 51c:	a0460014 	sb	a2,20(v0)
+ 514:	a0460014 	sb	a2,20(v0)
 src/self.c:55
- 520:	a1060002 	sb	a2,2(t0)
+ 518:	a1060002 	sb	a2,2(t0)
 src/self.c:57
- 524:	a0660028 	sb	a2,40(v1)
+ 51c:	a0660028 	sb	a2,40(v1)
 src/self.c:56
- 528:	a0660014 	sb	a2,20(v1)
+ 520:	a0660014 	sb	a2,20(v1)
 src/self.c:57
- 52c:	24030003 	li	v1,3
+ 524:	24030003 	li	v1,3
 src/self.c:55
- 530:	01031021 	addu	v0,t0,v1
+ 528:	01031021 	addu	v0,t0,v1
 src/self.c:57
- 534:	24630001 	addiu	v1,v1,1
- 538:	a0460028 	sb	a2,40(v0)
+ 52c:	24630001 	addiu	v1,v1,1
+ 530:	a0460028 	sb	a2,40(v0)
 src/self.c:55
- 53c:	a0460000 	sb	a2,0(v0)
+ 534:	a0460000 	sb	a2,0(v0)
 src/self.c:58
 				if (i == 16){
- 540:	1465fffb 	bne	v1,a1,530 <__start+0x80>
- 544:	a0460014 	sb	a2,20(v0)
+ 538:	1465fffb 	bne	v1,a1,528 <__start+0x78>
+ 53c:	a0460014 	sb	a2,20(v0)
 src/self.c:59
 					ptr += 2*CACHE_LINE;
- 548:	25080200 	addiu	t0,t0,512
+ 540:	25080200 	addiu	t0,t0,512
 src/self.c:61
 					i = 1;
 					ptr[0] = link;
- 54c:	a1060000 	sb	a2,0(t0)
+ 544:	a1060000 	sb	a2,0(t0)
 prefetch():
 src/flamewar.h:439
 }
@@ -250,21 +195,21 @@ src/flamewar.h:439
 __attribute__ ((unused)) static void prefetch(void *ptr) {
   /* invoke system call number 14 */
   register void *arg asm("a0") = ptr;
- 550:	25040201 	addiu	a0,t0,513
+ 548:	25040201 	addiu	a0,t0,513
 src/flamewar.h:440
   asm __volatile__ (
- 554:	2402000e 	li	v0,14
- 558:	0000000c 	syscall
- 55c:	0800014c 	j	530 <__start+0x80>
- 560:	24030001 	li	v1,1
+ 54c:	2402000e 	li	v0,14
+ 550:	0000000c 	syscall
+ 554:	0800014a 	j	528 <__start+0x78>
+ 558:	24030001 	li	v1,1
 __start():
 src/self.c:65
 					prefetch(ptr+2*CACHE_LINE+1);
 				}
 			}
 		} else if (core_id == 1){
- 564:	10a20060 	beq	a1,v0,6e8 <__start+0x238>
- 568:	24020002 	li	v0,2
+ 55c:	10a20077 	beq	a1,v0,73c <__start+0x28c>
+ 560:	24020002 	li	v0,2
 src/self.c:86
 
 			while(1){
@@ -287,14 +232,13 @@ src/self.c:86
 				}
 			}
 		} else if (core_id == 2){
- 56c:	10a20034 	beq	a1,v0,640 <__start+0x190>
- 570:	00002021 	move	a0,zero
- 574:	00063600 	sll	a2,a2,0x18
- 578:	00063603 	sra	a2,a2,0x18
- 57c:	00002821 	move	a1,zero
-src/self.c:110
-			//register unsigned long long stalls = 0;
-			//register char* where = ptr;
+ 564:	10a2004b 	beq	a1,v0,694 <__start+0x1e4>
+ 568:	00004821 	move	t1,zero
+ 56c:	00063600 	sll	a2,a2,0x18
+ 570:	00063603 	sra	a2,a2,0x18
+ 574:	00002021 	move	a0,zero
+ 578:	00002821 	move	a1,zero
+src/self.c:101
 			while(1){
 				ptr[60+i] = link;
 				ptr[71+i] = link;
@@ -302,45 +246,38 @@ src/self.c:110
 				ptr[100+i++] = link;
 				if (i==11){
 					i = 0;
-//					register char* tag = (char*)rdftag(ptr);
-//					ptr = tag ? cache_align(tag)-HI : ptr + 2*CACHE_LINE;
 					register unsigned int tag = cache_align(rdftag(ptr));
-										//printf("%x\n",tag);
-										ptr = tag > HOME_DATA_START && tag < HOME_DATA_END ? tag: ptr + 2*CACHE_LINE;
+					ptr = tag > HOME_DATA_START && tag < HOME_DATA_END ? tag: ptr + 2*CACHE_LINE;
 				}
 			}
 		} else {
-			//ptr = (char *)(HOME_DATA_SEGMENT) + (core_id&1)*CACHE_LINE;
-			//printf("%x\n",VADDR|(int)ptr);
 			k = 0;
-			//register unsigned long long stalls = 0;
-			//register char* where = (char*)(VADDR |(int)ptr);
 			while(1){
 				ptr[60+i] = link;
- 580:	01041021 	addu	v0,t0,a0
-src/self.c:114
+ 57c:	01041021 	addu	v0,t0,a0
+src/self.c:105
 				ptr[71+i] = link;
 				ptr[82+i] = link;
 				ptr[100+i++] = link;
 				if (i==10){
- 584:	2403000a 	li	v1,10
-src/self.c:113
- 588:	24840001 	addiu	a0,a0,1
- 58c:	a0460064 	sb	a2,100(v0)
-src/self.c:110
- 590:	a046003c 	sb	a2,60(v0)
-src/self.c:111
- 594:	a0460047 	sb	a2,71(v0)
-src/self.c:114
- 598:	1483fff9 	bne	a0,v1,580 <__start+0xd0>
- 59c:	a0460052 	sb	a2,82(v0)
-src/self.c:116
+ 580:	2403000a 	li	v1,10
+src/self.c:104
+ 584:	24840001 	addiu	a0,a0,1
+ 588:	a0460064 	sb	a2,100(v0)
+src/self.c:101
+ 58c:	a046003c 	sb	a2,60(v0)
+src/self.c:102
+ 590:	a0460047 	sb	a2,71(v0)
+src/self.c:105
+ 594:	1483fff9 	bne	a0,v1,57c <__start+0xcc>
+ 598:	a0460052 	sb	a2,82(v0)
+src/self.c:107
 					i = 0;
-					if (k++ == 20){
- 5a0:	24a50001 	addiu	a1,a1,1
- 5a4:	24020015 	li	v0,21
- 5a8:	10a20015 	beq	a1,v0,600 <__start+0x150>
- 5ac:	3c02000f 	lui	v0,0xf
+					if (k++ == 25){
+ 59c:	24a50001 	addiu	a1,a1,1
+ 5a0:	2402001a 	li	v0,26
+ 5a4:	10a20015 	beq	a1,v0,5fc <__start+0x14c>
+ 5a8:	3c02000f 	lui	v0,0xf
 rdftag():
 src/flamewar.h:490
 
@@ -348,11 +285,11 @@ __attribute__ ((unused)) static unsigned int rdftag(void *ptr) {
   /* invoke system call number 18 */
   register unsigned int ret asm("v0");
   register void *arg asm("a0") = ptr;
- 5b0:	01002021 	move	a0,t0
+ 5ac:	01002021 	move	a0,t0
 src/flamewar.h:491
   asm __volatile__ (
- 5b4:	24020012 	li	v0,18
- 5b8:	0000000c 	syscall
+ 5b0:	24020012 	li	v0,18
+ 5b4:	0000000c 	syscall
 __start():
 src/self.c:125
 						ptr[120] = link;
@@ -361,40 +298,48 @@ src/self.c:125
 								hammer(HOME_STATUS->taunt[k]);
 							}
 						}
+						// do a simple attack on fbi
+						h++;
+						if (h % 3 == 0){
+							troll();
+							retreat();
+						} else if (h == 100) {
+							// actually do an attack
+							h = 0;
+						}
 						k = 0;
 					}
 					register unsigned int tag = cache_align(rdftag(ptr));
- 5bc:	3c037fff 	lui	v1,0x7fff
- 5c0:	3463ff00 	ori	v1,v1,0xff00
- 5c4:	00432024 	and	a0,v0,v1
-src/self.c:127
-					//printf("%x\n",tag);
+ 5b8:	3c037fff 	lui	v1,0x7fff
+ 5bc:	3463ff00 	ori	v1,v1,0xff00
+ 5c0:	00432024 	and	a0,v0,v1
+src/self.c:126
 					ptr = tag > HOME_DATA_START && tag < HOME_DATA_END ? tag: ptr + 2*CACHE_LINE;
- 5c8:	3c02ffef 	lui	v0,0xffef
- 5cc:	3442ffff 	ori	v0,v0,0xffff
- 5d0:	3c0301ef 	lui	v1,0x1ef
- 5d4:	00821021 	addu	v0,a0,v0
- 5d8:	3463fffe 	ori	v1,v1,0xfffe
- 5dc:	0043102b 	sltu	v0,v0,v1
- 5e0:	14400004 	bnez	v0,5f4 <__start+0x144>
- 5e4:	00000000 	nop
- 5e8:	25080200 	addiu	t0,t0,512
- 5ec:	08000160 	j	580 <__start+0xd0>
- 5f0:	00002021 	move	a0,zero
- 5f4:	00804021 	move	t0,a0
- 5f8:	08000160 	j	580 <__start+0xd0>
- 5fc:	00002021 	move	a0,zero
-src/self.c:117
- 600:	a1060078 	sb	a2,120(t0)
- 604:	3447ff00 	ori	a3,v0,0xff00
- 608:	00001821 	move	v1,zero
- 60c:	24050072 	li	a1,114
-src/self.c:119
- 610:	00671021 	addu	v0,v1,a3
- 614:	8044001c 	lb	a0,28(v0)
- 618:	00000000 	nop
- 61c:	04800003 	bltz	a0,62c <__start+0x17c>
- 620:	00000000 	nop
+ 5c4:	3c02ffef 	lui	v0,0xffef
+ 5c8:	3442ffff 	ori	v0,v0,0xffff
+ 5cc:	3c0301ef 	lui	v1,0x1ef
+ 5d0:	00821021 	addu	v0,a0,v0
+ 5d4:	3463fffe 	ori	v1,v1,0xfffe
+ 5d8:	0043102b 	sltu	v0,v0,v1
+ 5dc:	14400004 	bnez	v0,5f0 <__start+0x140>
+ 5e0:	00000000 	nop
+ 5e4:	25080200 	addiu	t0,t0,512
+ 5e8:	0800015f 	j	57c <__start+0xcc>
+ 5ec:	00002021 	move	a0,zero
+ 5f0:	00804021 	move	t0,a0
+ 5f4:	0800015f 	j	57c <__start+0xcc>
+ 5f8:	00002021 	move	a0,zero
+src/self.c:108
+ 5fc:	a1060078 	sb	a2,120(t0)
+ 600:	3447ff00 	ori	a3,v0,0xff00
+ 604:	00001821 	move	v1,zero
+ 608:	24050072 	li	a1,114
+src/self.c:110
+ 60c:	00671021 	addu	v0,v1,a3
+ 610:	8044001c 	lb	a0,28(v0)
+ 614:	00000000 	nop
+ 618:	04800003 	bltz	a0,628 <__start+0x178>
+ 61c:	00000000 	nop
 hammer():
 src/flamewar.h:417
 __attribute__ ((unused)) static int hammer(int id) {
@@ -402,57 +347,120 @@ __attribute__ ((unused)) static int hammer(int id) {
   register int ret asm("v0");
   register int arg asm("a0") = id;
   asm __volatile__ (
- 624:	2402000c 	li	v0,12
- 628:	0000000c 	syscall
+ 620:	2402000c 	li	v0,12
+ 624:	0000000c 	syscall
 __start():
-src/self.c:118
- 62c:	24630001 	addiu	v1,v1,1
- 630:	1465fff8 	bne	v1,a1,614 <__start+0x164>
- 634:	00671021 	addu	v0,v1,a3
- 638:	0800016c 	j	5b0 <__start+0x100>
- 63c:	00002821 	move	a1,zero
+src/self.c:109
+ 628:	24630001 	addiu	v1,v1,1
+ 62c:	1465fff8 	bne	v1,a1,610 <__start+0x160>
+ 630:	00671021 	addu	v0,v1,a3
+src/self.c:116
+ 634:	3c025555 	lui	v0,0x5555
+src/self.c:115
+ 638:	25290001 	addiu	t1,t1,1
+src/self.c:116
+ 63c:	34425556 	ori	v0,v0,0x5556
+ 640:	01220018 	mult	t1,v0
+ 644:	000927c3 	sra	a0,t1,0x1f
+ 648:	00001010 	mfhi	v0
+ 64c:	00441023 	subu	v0,v0,a0
+ 650:	00021840 	sll	v1,v0,0x1
+ 654:	00621821 	addu	v1,v1,v0
+ 658:	15230007 	bne	t1,v1,678 <__start+0x1c8>
+ 65c:	24020064 	li	v0,100
+troll():
+src/flamewar.h:401
+}
+
+__attribute__ ((unused)) static void troll(void) {
+  /* invoke system call number 11 */
+  asm __volatile__ (
+ 660:	2402000b 	li	v0,11
+ 664:	0000000c 	syscall
+retreat():
+src/flamewar.h:428
+      ".set push\n\t"
+      ".set noreorder\n\t"
+      "addiu $2, $0, 11\n\t"
+      "syscall\n\t"
+      ".set pop\n\t"
+      :
+      :
+      : "v0"
+      );
+}
+
+__attribute__ ((unused)) static int hammer(int id) {
+  /* invoke system call number 12 */
+  register int ret asm("v0");
+  register int arg asm("a0") = id;
+  asm __volatile__ (
+      "addiu $2, $0, 12\n\t"
+      "syscall"
+      : "=r" (ret)
+      : "r" (arg)
+      );
+  return ret;
+}
+
+__attribute__ ((unused)) static void retreat(void) {
+  /* invoke system call number 13 */
+  asm __volatile__ (
+ 668:	2402000d 	li	v0,13
+ 66c:	0000000c 	syscall
+ 670:	0800016b 	j	5ac <__start+0xfc>
+ 674:	00002821 	move	a1,zero
+__start():
+src/self.c:119
+ 678:	11220003 	beq	t1,v0,688 <__start+0x1d8>
+ 67c:	00000000 	nop
+ 680:	0800016b 	j	5ac <__start+0xfc>
+ 684:	00002821 	move	a1,zero
+ 688:	00004821 	move	t1,zero
+ 68c:	0800016b 	j	5ac <__start+0xfc>
+ 690:	00002821 	move	a1,zero
+src/self.c:88
+ 694:	00063600 	sll	a2,a2,0x18
+ 698:	00063603 	sra	a2,a2,0x18
+ 69c:	25020001 	addiu	v0,t0,1
+ 6a0:	a106003c 	sb	a2,60(t0)
+src/self.c:89
+ 6a4:	a1060047 	sb	a2,71(t0)
 src/self.c:90
- 640:	00063600 	sll	a2,a2,0x18
- 644:	00063603 	sra	a2,a2,0x18
- 648:	25020001 	addiu	v0,t0,1
- 64c:	a106003c 	sb	a2,60(t0)
+ 6a8:	a1060052 	sb	a2,82(t0)
 src/self.c:91
- 650:	a1060047 	sb	a2,71(t0)
-src/self.c:92
- 654:	a1060052 	sb	a2,82(t0)
-src/self.c:93
- 658:	a1060064 	sb	a2,100(t0)
-src/self.c:90
- 65c:	25030002 	addiu	v1,t0,2
-src/self.c:93
- 660:	a0460064 	sb	a2,100(v0)
-src/self.c:90
- 664:	a046003c 	sb	a2,60(v0)
+ 6ac:	a1060064 	sb	a2,100(t0)
+src/self.c:88
+ 6b0:	25030002 	addiu	v1,t0,2
 src/self.c:91
- 668:	a0460047 	sb	a2,71(v0)
-src/self.c:92
- 66c:	a0460052 	sb	a2,82(v0)
- 670:	3c027fff 	lui	v0,0x7fff
-src/self.c:93
- 674:	a0660064 	sb	a2,100(v1)
+ 6b4:	a0460064 	sb	a2,100(v0)
+src/self.c:88
+ 6b8:	a046003c 	sb	a2,60(v0)
+src/self.c:89
+ 6bc:	a0460047 	sb	a2,71(v0)
 src/self.c:90
- 678:	a066003c 	sb	a2,60(v1)
+ 6c0:	a0460052 	sb	a2,82(v0)
+ 6c4:	3c027fff 	lui	v0,0x7fff
 src/self.c:91
- 67c:	a0660047 	sb	a2,71(v1)
-src/self.c:92
- 680:	a0660052 	sb	a2,82(v1)
- 684:	3449ff00 	ori	t1,v0,0xff00
- 688:	3c03ffef 	lui	v1,0xffef
- 68c:	3c0201ef 	lui	v0,0x1ef
- 690:	3463ffff 	ori	v1,v1,0xffff
- 694:	344afffe 	ori	t2,v0,0xfffe
-src/self.c:93
- 698:	24050003 	li	a1,3
- 69c:	2407000b 	li	a3,11
+ 6c8:	a0660064 	sb	a2,100(v1)
+src/self.c:88
+ 6cc:	a066003c 	sb	a2,60(v1)
+src/self.c:89
+ 6d0:	a0660047 	sb	a2,71(v1)
 src/self.c:90
- 6a0:	00a81021 	addu	v0,a1,t0
-src/self.c:93
- 6a4:	24a50001 	addiu	a1,a1,1
+ 6d4:	a0660052 	sb	a2,82(v1)
+ 6d8:	3449ff00 	ori	t1,v0,0xff00
+ 6dc:	3c03ffef 	lui	v1,0xffef
+ 6e0:	3c0201ef 	lui	v0,0x1ef
+ 6e4:	3463ffff 	ori	v1,v1,0xffff
+ 6e8:	344afffe 	ori	t2,v0,0xfffe
+src/self.c:91
+ 6ec:	24050003 	li	a1,3
+ 6f0:	2407000b 	li	a3,11
+src/self.c:88
+ 6f4:	00a81021 	addu	v0,a1,t0
+src/self.c:91
+ 6f8:	24a50001 	addiu	a1,a1,1
 rdftag():
 src/flamewar.h:490
 
@@ -460,17 +468,17 @@ __attribute__ ((unused)) static unsigned int rdftag(void *ptr) {
   /* invoke system call number 18 */
   register unsigned int ret asm("v0");
   register void *arg asm("a0") = ptr;
- 6a8:	01002021 	move	a0,t0
+ 6fc:	01002021 	move	a0,t0
 __start():
-src/self.c:93
- 6ac:	a0460064 	sb	a2,100(v0)
-src/self.c:90
- 6b0:	a046003c 	sb	a2,60(v0)
 src/self.c:91
- 6b4:	a0460047 	sb	a2,71(v0)
-src/self.c:94
- 6b8:	14a7fff9 	bne	a1,a3,6a0 <__start+0x1f0>
- 6bc:	a0460052 	sb	a2,82(v0)
+ 700:	a0460064 	sb	a2,100(v0)
+src/self.c:88
+ 704:	a046003c 	sb	a2,60(v0)
+src/self.c:89
+ 708:	a0460047 	sb	a2,71(v0)
+src/self.c:92
+ 70c:	14a7fff9 	bne	a1,a3,6f4 <__start+0x244>
+ 710:	a0460052 	sb	a2,82(v0)
 rdftag():
 src/flamewar.h:491
 __attribute__ ((unused)) static unsigned int rdftag(void *ptr) {
@@ -478,65 +486,65 @@ __attribute__ ((unused)) static unsigned int rdftag(void *ptr) {
   register unsigned int ret asm("v0");
   register void *arg asm("a0") = ptr;
   asm __volatile__ (
- 6c0:	24020012 	li	v0,18
- 6c4:	0000000c 	syscall
+ 714:	24020012 	li	v0,18
+ 718:	0000000c 	syscall
 __start():
-src/self.c:98
- 6c8:	00492024 	and	a0,v0,t1
-src/self.c:100
- 6cc:	00831021 	addu	v0,a0,v1
- 6d0:	004a102b 	sltu	v0,v0,t2
- 6d4:	25080200 	addiu	t0,t0,512
- 6d8:	1040fff1 	beqz	v0,6a0 <__start+0x1f0>
- 6dc:	00002821 	move	a1,zero
- 6e0:	080001a8 	j	6a0 <__start+0x1f0>
- 6e4:	00804021 	move	t0,a0
+src/self.c:94
+ 71c:	00492024 	and	a0,v0,t1
+src/self.c:95
+ 720:	00831021 	addu	v0,a0,v1
+ 724:	004a102b 	sltu	v0,v0,t2
+ 728:	25080200 	addiu	t0,t0,512
+ 72c:	1040fff1 	beqz	v0,6f4 <__start+0x244>
+ 730:	00002821 	move	a1,zero
+ 734:	080001bd 	j	6f4 <__start+0x244>
+ 738:	00804021 	move	t0,a0
 src/self.c:68
- 6e8:	00065600 	sll	t2,a2,0x18
- 6ec:	000a5603 	sra	t2,t2,0x18
- 6f0:	25040002 	addiu	a0,t0,2
- 6f4:	25020001 	addiu	v0,t0,1
- 6f8:	3c03000f 	lui	v1,0xf
- 6fc:	a10a0000 	sb	t2,0(t0)
+ 73c:	00065600 	sll	t2,a2,0x18
+ 740:	000a5603 	sra	t2,t2,0x18
+ 744:	25040002 	addiu	a0,t0,2
+ 748:	25020001 	addiu	v0,t0,1
+ 74c:	3c03000f 	lui	v1,0xf
+ 750:	a10a0000 	sb	t2,0(t0)
 src/self.c:69
- 700:	a10a0014 	sb	t2,20(t0)
+ 754:	a10a0014 	sb	t2,20(t0)
 src/self.c:70
- 704:	a10a0028 	sb	t2,40(t0)
+ 758:	a10a0028 	sb	t2,40(t0)
 src/self.c:68
- 708:	a10a0001 	sb	t2,1(t0)
- 70c:	3463ff00 	ori	v1,v1,0xff00
+ 75c:	a10a0001 	sb	t2,1(t0)
+ 760:	3463ff00 	ori	v1,v1,0xff00
 src/self.c:70
- 710:	a04a0028 	sb	t2,40(v0)
+ 764:	a04a0028 	sb	t2,40(v0)
 src/self.c:69
- 714:	a04a0014 	sb	t2,20(v0)
- 718:	240b0010 	li	t3,16
+ 768:	a04a0014 	sb	t2,20(v0)
+ 76c:	240b0010 	li	t3,16
 src/self.c:68
- 71c:	a10a0002 	sb	t2,2(t0)
+ 770:	a10a0002 	sb	t2,2(t0)
 src/self.c:70
- 720:	a08a0028 	sb	t2,40(a0)
+ 774:	a08a0028 	sb	t2,40(a0)
 src/self.c:69
- 724:	a08a0014 	sb	t2,20(a0)
+ 778:	a08a0014 	sb	t2,20(a0)
 src/self.c:70
- 728:	24040003 	li	a0,3
+ 77c:	24040003 	li	a0,3
 src/self.c:68
- 72c:	00881021 	addu	v0,a0,t0
+ 780:	00881021 	addu	v0,a0,t0
 src/self.c:70
- 730:	24840001 	addiu	a0,a0,1
- 734:	a04a0028 	sb	t2,40(v0)
+ 784:	24840001 	addiu	a0,a0,1
+ 788:	a04a0028 	sb	t2,40(v0)
 src/self.c:68
- 738:	a04a0000 	sb	t2,0(v0)
+ 78c:	a04a0000 	sb	t2,0(v0)
 src/self.c:71
- 73c:	148bfffb 	bne	a0,t3,72c <__start+0x27c>
- 740:	a04a0014 	sb	t2,20(v0)
+ 790:	148bfffb 	bne	a0,t3,780 <__start+0x2d0>
+ 794:	a04a0014 	sb	t2,20(v0)
 src/self.c:73
- 744:	81020078 	lb	v0,120(t0)
- 748:	00000000 	nop
- 74c:	10c20008 	beq	a2,v0,770 <__start+0x2c0>
- 750:	24050072 	li	a1,114
+ 798:	81020078 	lb	v0,120(t0)
+ 79c:	00000000 	nop
+ 7a0:	10c20008 	beq	a2,v0,7c4 <__start+0x314>
+ 7a4:	24050072 	li	a1,114
 src/self.c:80
- 754:	25080200 	addiu	t0,t0,512
+ 7a8:	25080200 	addiu	t0,t0,512
 src/self.c:82
- 758:	a10a0000 	sb	t2,0(t0)
+ 7ac:	a10a0000 	sb	t2,0(t0)
 prefetch():
 src/flamewar.h:439
 }
@@ -544,22 +552,22 @@ src/flamewar.h:439
 __attribute__ ((unused)) static void prefetch(void *ptr) {
   /* invoke system call number 14 */
   register void *arg asm("a0") = ptr;
- 75c:	25040201 	addiu	a0,t0,513
+ 7b0:	25040201 	addiu	a0,t0,513
 src/flamewar.h:440
   asm __volatile__ (
- 760:	2402000e 	li	v0,14
- 764:	0000000c 	syscall
- 768:	080001cb 	j	72c <__start+0x27c>
- 76c:	00002021 	move	a0,zero
- 770:	00604821 	move	t1,v1
- 774:	240700e4 	li	a3,228
+ 7b4:	2402000e 	li	v0,14
+ 7b8:	0000000c 	syscall
+ 7bc:	080001e0 	j	780 <__start+0x2d0>
+ 7c0:	00002021 	move	a0,zero
+ 7c4:	00604821 	move	t1,v1
+ 7c8:	240700e4 	li	a3,228
 __start():
 src/self.c:75
- 778:	00a91021 	addu	v0,a1,t1
- 77c:	8044001c 	lb	a0,28(v0)
- 780:	00000000 	nop
- 784:	04800003 	bltz	a0,794 <__start+0x2e4>
- 788:	00000000 	nop
+ 7cc:	00a91021 	addu	v0,a1,t1
+ 7d0:	8044001c 	lb	a0,28(v0)
+ 7d4:	00000000 	nop
+ 7d8:	04800003 	bltz	a0,7e8 <__start+0x338>
+ 7dc:	00000000 	nop
 hammer():
 src/flamewar.h:417
 __attribute__ ((unused)) static int hammer(int id) {
@@ -567,101 +575,101 @@ __attribute__ ((unused)) static int hammer(int id) {
   register int ret asm("v0");
   register int arg asm("a0") = id;
   asm __volatile__ (
- 78c:	2402000c 	li	v0,12
- 790:	0000000c 	syscall
+ 7e0:	2402000c 	li	v0,12
+ 7e4:	0000000c 	syscall
 __start():
 src/self.c:74
- 794:	24a50001 	addiu	a1,a1,1
- 798:	14a7fff8 	bne	a1,a3,77c <__start+0x2cc>
- 79c:	00a91021 	addu	v0,a1,t1
+ 7e8:	24a50001 	addiu	a1,a1,1
+ 7ec:	14a7fff8 	bne	a1,a3,7d0 <__start+0x320>
+ 7f0:	00a91021 	addu	v0,a1,t1
 src/self.c:80
- 7a0:	080001d6 	j	758 <__start+0x2a8>
- 7a4:	25080200 	addiu	t0,t0,512
+ 7f4:	080001eb 	j	7ac <__start+0x2fc>
+ 7f8:	25080200 	addiu	t0,t0,512
 src/self.c:27
- 7a8:	1440001c 	bnez	v0,81c <__start+0x36c>
- 7ac:	25020001 	addiu	v0,t0,1
+ 7fc:	1440001c 	bnez	v0,870 <__start+0x3c0>
+ 800:	25020001 	addiu	v0,t0,1
 src/self.c:42
- 7b0:	00063600 	sll	a2,a2,0x18
- 7b4:	00063603 	sra	a2,a2,0x18
- 7b8:	25030002 	addiu	v1,t0,2
- 7bc:	a10600aa 	sb	a2,170(t0)
+ 804:	00063600 	sll	a2,a2,0x18
+ 808:	00063603 	sra	a2,a2,0x18
+ 80c:	25030002 	addiu	v1,t0,2
+ 810:	a10600aa 	sb	a2,170(t0)
 src/self.c:43
- 7c0:	a10600b9 	sb	a2,185(t0)
+ 814:	a10600b9 	sb	a2,185(t0)
 src/self.c:44
- 7c4:	a10600c4 	sb	a2,196(t0)
+ 818:	a10600c4 	sb	a2,196(t0)
 src/self.c:45
- 7c8:	a10600d2 	sb	a2,210(t0)
- 7cc:	24040003 	li	a0,3
- 7d0:	a04600d2 	sb	a2,210(v0)
+ 81c:	a10600d2 	sb	a2,210(t0)
+ 820:	24040003 	li	a0,3
+ 824:	a04600d2 	sb	a2,210(v0)
 src/self.c:42
- 7d4:	a04600aa 	sb	a2,170(v0)
+ 828:	a04600aa 	sb	a2,170(v0)
 src/self.c:43
- 7d8:	a04600b9 	sb	a2,185(v0)
+ 82c:	a04600b9 	sb	a2,185(v0)
 src/self.c:44
- 7dc:	a04600c4 	sb	a2,196(v0)
+ 830:	a04600c4 	sb	a2,196(v0)
 src/self.c:45
- 7e0:	a06600d2 	sb	a2,210(v1)
+ 834:	a06600d2 	sb	a2,210(v1)
 src/self.c:42
- 7e4:	a06600aa 	sb	a2,170(v1)
+ 838:	a06600aa 	sb	a2,170(v1)
 src/self.c:43
- 7e8:	a06600b9 	sb	a2,185(v1)
+ 83c:	a06600b9 	sb	a2,185(v1)
 src/self.c:44
- 7ec:	a06600c4 	sb	a2,196(v1)
+ 840:	a06600c4 	sb	a2,196(v1)
 src/self.c:42
- 7f0:	00881021 	addu	v0,a0,t0
+ 844:	00881021 	addu	v0,a0,t0
 src/self.c:46
- 7f4:	2403000c 	li	v1,12
+ 848:	2403000c 	li	v1,12
 src/self.c:45
- 7f8:	24840001 	addiu	a0,a0,1
- 7fc:	a04600d2 	sb	a2,210(v0)
+ 84c:	24840001 	addiu	a0,a0,1
+ 850:	a04600d2 	sb	a2,210(v0)
 src/self.c:42
- 800:	a04600aa 	sb	a2,170(v0)
+ 854:	a04600aa 	sb	a2,170(v0)
 src/self.c:43
- 804:	a04600b9 	sb	a2,185(v0)
+ 858:	a04600b9 	sb	a2,185(v0)
 src/self.c:46
- 808:	1483fff9 	bne	a0,v1,7f0 <__start+0x340>
- 80c:	a04600c4 	sb	a2,196(v0)
+ 85c:	1483fff9 	bne	a0,v1,844 <__start+0x394>
+ 860:	a04600c4 	sb	a2,196(v0)
 src/self.c:47
- 810:	25080200 	addiu	t0,t0,512
- 814:	080001fc 	j	7f0 <__start+0x340>
- 818:	00002021 	move	a0,zero
+ 864:	25080200 	addiu	t0,t0,512
+ 868:	08000211 	j	844 <__start+0x394>
+ 86c:	00002021 	move	a0,zero
 src/self.c:29
- 81c:	00063600 	sll	a2,a2,0x18
- 820:	00063603 	sra	a2,a2,0x18
- 824:	25030002 	addiu	v1,t0,2
- 828:	a106006e 	sb	a2,110(t0)
+ 870:	00063600 	sll	a2,a2,0x18
+ 874:	00063603 	sra	a2,a2,0x18
+ 878:	25030002 	addiu	v1,t0,2
+ 87c:	a106006e 	sb	a2,110(t0)
 src/self.c:30
- 82c:	a1060082 	sb	a2,130(t0)
+ 880:	a1060082 	sb	a2,130(t0)
 src/self.c:31
- 830:	a1060096 	sb	a2,150(t0)
- 834:	24050010 	li	a1,16
- 838:	a0460096 	sb	a2,150(v0)
+ 884:	a1060096 	sb	a2,150(t0)
+ 888:	24050010 	li	a1,16
+ 88c:	a0460096 	sb	a2,150(v0)
 src/self.c:29
- 83c:	a046006e 	sb	a2,110(v0)
+ 890:	a046006e 	sb	a2,110(v0)
 src/self.c:30
- 840:	a0460082 	sb	a2,130(v0)
+ 894:	a0460082 	sb	a2,130(v0)
 src/self.c:31
- 844:	a0660096 	sb	a2,150(v1)
+ 898:	a0660096 	sb	a2,150(v1)
 src/self.c:29
- 848:	a066006e 	sb	a2,110(v1)
+ 89c:	a066006e 	sb	a2,110(v1)
 src/self.c:30
- 84c:	a0660082 	sb	a2,130(v1)
+ 8a0:	a0660082 	sb	a2,130(v1)
 src/self.c:31
- 850:	24030003 	li	v1,3
+ 8a4:	24030003 	li	v1,3
 src/self.c:29
- 854:	01031021 	addu	v0,t0,v1
+ 8a8:	01031021 	addu	v0,t0,v1
 src/self.c:31
- 858:	24630001 	addiu	v1,v1,1
- 85c:	a0460096 	sb	a2,150(v0)
+ 8ac:	24630001 	addiu	v1,v1,1
+ 8b0:	a0460096 	sb	a2,150(v0)
 src/self.c:29
- 860:	a046006e 	sb	a2,110(v0)
+ 8b4:	a046006e 	sb	a2,110(v0)
 src/self.c:32
- 864:	1465fffb 	bne	v1,a1,854 <__start+0x3a4>
- 868:	a0460082 	sb	a2,130(v0)
+ 8b8:	1465fffb 	bne	v1,a1,8a8 <__start+0x3f8>
+ 8bc:	a0460082 	sb	a2,130(v0)
 src/self.c:33
- 86c:	25080200 	addiu	t0,t0,512
+ 8c0:	25080200 	addiu	t0,t0,512
 src/self.c:35
- 870:	a1060000 	sb	a2,0(t0)
+ 8c4:	a1060000 	sb	a2,0(t0)
 prefetch():
 src/flamewar.h:439
 }
@@ -669,11 +677,12 @@ src/flamewar.h:439
 __attribute__ ((unused)) static void prefetch(void *ptr) {
   /* invoke system call number 14 */
   register void *arg asm("a0") = ptr;
- 874:	25040201 	addiu	a0,t0,513
+ 8c8:	25040201 	addiu	a0,t0,513
 src/flamewar.h:440
   asm __volatile__ (
- 878:	2402000e 	li	v0,14
- 87c:	0000000c 	syscall
- 880:	08000215 	j	854 <__start+0x3a4>
- 884:	24030001 	li	v1,1
-	...
+ 8cc:	2402000e 	li	v0,14
+ 8d0:	0000000c 	syscall
+ 8d4:	0800022a 	j	8a8 <__start+0x3f8>
+ 8d8:	24030001 	li	v1,1
+_ftext():
+ 8dc:	00000000 	nop
