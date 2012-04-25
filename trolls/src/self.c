@@ -7,7 +7,8 @@
 
 #include "flamewar.h"
 
-#define cache_align(x) (((int)x) & 0xffffff00)
+//80000000                         0x70000000
+#define cache_align(x) (((unsigned long)x) & 0x7fffff00)
 
 /* Honest Bot. Fills its own half of memory using cores 0 and 1, 2, 3
  * Uses a simple loop with a random start address.
@@ -92,8 +93,11 @@ void __start(int core_id, int num_crashes, unsigned char link) {
 				ptr[100+i++] = link;
 				if (i==11){
 					i = 0;
-					register char* tag = (char*)rdftag(ptr);
-					ptr = tag ? cache_align(tag)-HI : ptr + 2*CACHE_LINE;
+//					register char* tag = (char*)rdftag(ptr);
+//					ptr = tag ? cache_align(tag)-HI : ptr + 2*CACHE_LINE;
+					register unsigned int tag = cache_align(rdftag(ptr));
+					//printf("%x\n",tag);
+					ptr = tag > HOME_DATA_START && tag < HOME_DATA_END ? tag: ptr + 2*CACHE_LINE;
 				}
 			}
 		} else {
@@ -118,9 +122,9 @@ void __start(int core_id, int num_crashes, unsigned char link) {
 						}
 						k = 0;
 					}
-					register char* tag = (char*)rdftag(ptr);
-					//printf("%x\n",rdftag(ptr));
-					ptr = tag ? cache_align(tag)-HI : ptr + 2*CACHE_LINE;
+					register unsigned int tag = cache_align(rdftag(ptr));
+					//printf("%x\n",tag);
+					ptr = tag > HOME_DATA_START && tag < HOME_DATA_END ? tag: ptr + 2*CACHE_LINE;
 				}
 			}
 		}

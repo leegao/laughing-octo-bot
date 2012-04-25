@@ -114,8 +114,8 @@
 [core 1.0] 0x000004dc: lb $v1, 0($t0)
 [core 1.0] mem access 0x00100000 hits cache line 2
 [core 1.0] 0x000004e0: sll $0, $0, 0
-[core 1.0] 0x000004e4: beq $v1, $a2, 0x00000778
-[core 1.0] 0x000004e8: addu $a0, $v0, $0
+[core 1.0] 0x000004e4: beq $v1, $a2, 0x000007a8
+[core 1.0] 0x000004e8: slti $v0, $a1, 2
 [core 1.0] 0x000004ec: bne $a1, $0, 0x00000564
 [core 1.0] 0x000004f0: addiu $v0, $0, 1
 [core 1.0] 0x000004f4: sll $a2, $a2, 24
@@ -509,6 +509,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x00100400 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x80100400 vaddr=0x00100400] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80100400 vaddr=0x00100400] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80100400 vaddr=0x00100400] 0x0000054c: sb $a2, 0($t0)
@@ -662,6 +663,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x00100600 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x80100600 vaddr=0x00100600] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80100600 vaddr=0x00100600] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80100600 vaddr=0x00100600] 0x0000054c: sb $a2, 0($t0)
@@ -815,6 +817,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x00100800 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x80100800 vaddr=0x00100800] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80100800 vaddr=0x00100800] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80100800 vaddr=0x00100800] 0x0000054c: sb $a2, 0($t0)
@@ -968,6 +971,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x00100a00 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x80100a00 vaddr=0x00100a00] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80100a00 vaddr=0x00100a00] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80100a00 vaddr=0x00100a00] 0x0000054c: sb $a2, 0($t0)
@@ -1121,6 +1125,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x00100c00 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x80100c00 vaddr=0x00100c00] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80100c00 vaddr=0x00100c00] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80100c00 vaddr=0x00100c00] 0x0000054c: sb $a2, 0($t0)
@@ -1274,6 +1279,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x00100e00 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x80100e00 vaddr=0x00100e00] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80100e00 vaddr=0x00100e00] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80100e00 vaddr=0x00100e00] 0x0000054c: sb $a2, 0($t0)
@@ -1427,6 +1433,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x00101000 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x80101000 vaddr=0x00101000] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80101000 vaddr=0x00101000] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80101000 vaddr=0x00101000] 0x0000054c: sb $a2, 0($t0)
@@ -1580,6 +1587,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x00101200 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x80101200 vaddr=0x00101200] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80101200 vaddr=0x00101200] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80101200 vaddr=0x00101200] 0x0000054c: sb $a2, 0($t0)
@@ -1733,6 +1741,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x00101400 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x80101400 vaddr=0x00101400] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80101400 vaddr=0x00101400] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80101400 vaddr=0x00101400] 0x0000054c: sb $a2, 0($t0)
@@ -1886,6 +1895,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x00101600 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x80101600 vaddr=0x00101600] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80101600 vaddr=0x00101600] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80101600 vaddr=0x00101600] 0x0000054c: sb $a2, 0($t0)
@@ -2039,6 +2049,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x00101800 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x80101800 vaddr=0x00101800] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80101800 vaddr=0x00101800] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80101800 vaddr=0x00101800] 0x0000054c: sb $a2, 0($t0)
@@ -2192,6 +2203,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x00101a00 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x80101a00 vaddr=0x00101a00] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80101a00 vaddr=0x00101a00] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80101a00 vaddr=0x00101a00] 0x0000054c: sb $a2, 0($t0)
@@ -2345,6 +2357,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x00101c00 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x80101c00 vaddr=0x00101c00] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80101c00 vaddr=0x00101c00] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80101c00 vaddr=0x00101c00] 0x0000054c: sb $a2, 0($t0)
@@ -2498,6 +2511,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x00101e00 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x80101e00 vaddr=0x00101e00] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80101e00 vaddr=0x00101e00] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80101e00 vaddr=0x00101e00] 0x0000054c: sb $a2, 0($t0)
@@ -2651,6 +2665,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x00102000 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x80102000 vaddr=0x00102000] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80102000 vaddr=0x00102000] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80102000 vaddr=0x00102000] 0x0000054c: sb $a2, 0($t0)
@@ -2804,6 +2819,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x00102200 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x80102200 vaddr=0x00102200] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80102200 vaddr=0x00102200] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80102200 vaddr=0x00102200] 0x0000054c: sb $a2, 0($t0)
@@ -2957,6 +2973,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x00102400 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x80102400 vaddr=0x00102400] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80102400 vaddr=0x00102400] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80102400 vaddr=0x00102400] 0x0000054c: sb $a2, 0($t0)
@@ -3110,6 +3127,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x00102600 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x80102600 vaddr=0x00102600] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80102600 vaddr=0x00102600] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80102600 vaddr=0x00102600] 0x0000054c: sb $a2, 0($t0)
@@ -3263,6 +3281,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x00102800 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x80102800 vaddr=0x00102800] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80102800 vaddr=0x00102800] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80102800 vaddr=0x00102800] 0x0000054c: sb $a2, 0($t0)
@@ -3416,6 +3435,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x00102a00 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x80102a00 vaddr=0x00102a00] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80102a00 vaddr=0x00102a00] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80102a00 vaddr=0x00102a00] 0x0000054c: sb $a2, 0($t0)
@@ -3569,6 +3589,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x00102c00 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x80102c00 vaddr=0x00102c00] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80102c00 vaddr=0x00102c00] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80102c00 vaddr=0x00102c00] 0x0000054c: sb $a2, 0($t0)
@@ -3722,6 +3743,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x00102e00 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x80102e00 vaddr=0x00102e00] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80102e00 vaddr=0x00102e00] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80102e00 vaddr=0x00102e00] 0x0000054c: sb $a2, 0($t0)
@@ -3875,6 +3897,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x00103000 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x80103000 vaddr=0x00103000] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80103000 vaddr=0x00103000] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80103000 vaddr=0x00103000] 0x0000054c: sb $a2, 0($t0)
@@ -4028,6 +4051,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x00103200 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x80103200 vaddr=0x00103200] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80103200 vaddr=0x00103200] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80103200 vaddr=0x00103200] 0x0000054c: sb $a2, 0($t0)
@@ -4181,6 +4205,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x00103400 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x80103400 vaddr=0x00103400] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80103400 vaddr=0x00103400] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80103400 vaddr=0x00103400] 0x0000054c: sb $a2, 0($t0)
@@ -4334,6 +4359,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x00103600 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x80103600 vaddr=0x00103600] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80103600 vaddr=0x00103600] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80103600 vaddr=0x00103600] 0x0000054c: sb $a2, 0($t0)
@@ -4487,6 +4513,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x00103800 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x80103800 vaddr=0x00103800] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80103800 vaddr=0x00103800] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80103800 vaddr=0x00103800] 0x0000054c: sb $a2, 0($t0)
@@ -4641,6 +4668,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x00103a00 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x80103a00 vaddr=0x00103a00] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80103a00 vaddr=0x00103a00] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80103a00 vaddr=0x00103a00] 0x0000054c: sb $a2, 0($t0)
@@ -4793,6 +4821,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x00103c00 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x80103c00 vaddr=0x00103c00] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80103c00 vaddr=0x00103c00] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80103c00 vaddr=0x00103c00] 0x0000054c: sb $a2, 0($t0)
@@ -4946,6 +4975,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x00103e00 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x80103e00 vaddr=0x00103e00] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80103e00 vaddr=0x00103e00] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80103e00 vaddr=0x00103e00] 0x0000054c: sb $a2, 0($t0)
@@ -5099,6 +5129,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x00104000 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x80104000 vaddr=0x00104000] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80104000 vaddr=0x00104000] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80104000 vaddr=0x00104000] 0x0000054c: sb $a2, 0($t0)
@@ -5252,6 +5283,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x00104200 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x80104200 vaddr=0x00104200] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80104200 vaddr=0x00104200] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80104200 vaddr=0x00104200] 0x0000054c: sb $a2, 0($t0)
@@ -5405,6 +5437,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x00104400 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x80104400 vaddr=0x00104400] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80104400 vaddr=0x00104400] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80104400 vaddr=0x00104400] 0x0000054c: sb $a2, 0($t0)
@@ -5558,6 +5591,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x00104600 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x80104600 vaddr=0x00104600] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80104600 vaddr=0x00104600] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80104600 vaddr=0x00104600] 0x0000054c: sb $a2, 0($t0)
@@ -5711,6 +5745,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x00104800 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x80104800 vaddr=0x00104800] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80104800 vaddr=0x00104800] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80104800 vaddr=0x00104800] 0x0000054c: sb $a2, 0($t0)
@@ -5864,6 +5899,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x00104a00 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x80104a00 vaddr=0x00104a00] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80104a00 vaddr=0x00104a00] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80104a00 vaddr=0x00104a00] 0x0000054c: sb $a2, 0($t0)
@@ -6017,6 +6053,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x00104c00 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x80104c00 vaddr=0x00104c00] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80104c00 vaddr=0x00104c00] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80104c00 vaddr=0x00104c00] 0x0000054c: sb $a2, 0($t0)
@@ -6170,6 +6207,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x00104e00 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x80104e00 vaddr=0x00104e00] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80104e00 vaddr=0x00104e00] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80104e00 vaddr=0x00104e00] 0x0000054c: sb $a2, 0($t0)
@@ -6323,6 +6361,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x00105000 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x80105000 vaddr=0x00105000] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80105000 vaddr=0x00105000] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80105000 vaddr=0x00105000] 0x0000054c: sb $a2, 0($t0)
@@ -6476,6 +6515,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x00105200 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x80105200 vaddr=0x00105200] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80105200 vaddr=0x00105200] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80105200 vaddr=0x00105200] 0x0000054c: sb $a2, 0($t0)
@@ -6629,6 +6669,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x00105400 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x80105400 vaddr=0x00105400] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80105400 vaddr=0x00105400] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80105400 vaddr=0x00105400] 0x0000054c: sb $a2, 0($t0)
@@ -6782,6 +6823,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x00105600 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x80105600 vaddr=0x00105600] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80105600 vaddr=0x00105600] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80105600 vaddr=0x00105600] 0x0000054c: sb $a2, 0($t0)
@@ -6935,6 +6977,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x00105800 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x80105800 vaddr=0x00105800] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80105800 vaddr=0x00105800] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80105800 vaddr=0x00105800] 0x0000054c: sb $a2, 0($t0)
@@ -7088,6 +7131,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x00105a00 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x80105a00 vaddr=0x00105a00] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80105a00 vaddr=0x00105a00] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80105a00 vaddr=0x00105a00] 0x0000054c: sb $a2, 0($t0)
@@ -7241,6 +7285,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x00105c00 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x80105c00 vaddr=0x00105c00] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80105c00 vaddr=0x00105c00] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80105c00 vaddr=0x00105c00] 0x0000054c: sb $a2, 0($t0)
@@ -7394,6 +7439,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x00105e00 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x80105e00 vaddr=0x00105e00] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80105e00 vaddr=0x00105e00] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80105e00 vaddr=0x00105e00] 0x0000054c: sb $a2, 0($t0)
@@ -7547,6 +7593,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x00106000 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x80106000 vaddr=0x00106000] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80106000 vaddr=0x00106000] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80106000 vaddr=0x00106000] 0x0000054c: sb $a2, 0($t0)
@@ -7700,6 +7747,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x00106200 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x80106200 vaddr=0x00106200] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80106200 vaddr=0x00106200] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80106200 vaddr=0x00106200] 0x0000054c: sb $a2, 0($t0)
@@ -7853,6 +7901,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x00106400 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x80106400 vaddr=0x00106400] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80106400 vaddr=0x00106400] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80106400 vaddr=0x00106400] 0x0000054c: sb $a2, 0($t0)
@@ -8006,6 +8055,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x00106600 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x80106600 vaddr=0x00106600] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80106600 vaddr=0x00106600] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80106600 vaddr=0x00106600] 0x0000054c: sb $a2, 0($t0)
@@ -8159,6 +8209,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x00106800 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x80106800 vaddr=0x00106800] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80106800 vaddr=0x00106800] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80106800 vaddr=0x00106800] 0x0000054c: sb $a2, 0($t0)
@@ -8312,6 +8363,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x00106a00 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x80106a00 vaddr=0x00106a00] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80106a00 vaddr=0x00106a00] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80106a00 vaddr=0x00106a00] 0x0000054c: sb $a2, 0($t0)
@@ -8619,6 +8671,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x00106e00 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x80106e00 vaddr=0x00106e00] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80106e00 vaddr=0x00106e00] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80106e00 vaddr=0x00106e00] 0x0000054c: sb $a2, 0($t0)
@@ -8772,6 +8825,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x00107000 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x80107000 vaddr=0x00107000] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80107000 vaddr=0x00107000] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80107000 vaddr=0x00107000] 0x0000054c: sb $a2, 0($t0)
@@ -8925,6 +8979,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x00107200 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x80107200 vaddr=0x00107200] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80107200 vaddr=0x00107200] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80107200 vaddr=0x00107200] 0x0000054c: sb $a2, 0($t0)
@@ -9078,6 +9133,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x00107400 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x80107400 vaddr=0x00107400] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80107400 vaddr=0x00107400] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80107400 vaddr=0x00107400] 0x0000054c: sb $a2, 0($t0)
@@ -9231,6 +9287,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x00107600 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x80107600 vaddr=0x00107600] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80107600 vaddr=0x00107600] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80107600 vaddr=0x00107600] 0x0000054c: sb $a2, 0($t0)
@@ -9384,6 +9441,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x00107800 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x80107800 vaddr=0x00107800] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80107800 vaddr=0x00107800] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80107800 vaddr=0x00107800] 0x0000054c: sb $a2, 0($t0)
@@ -9537,6 +9595,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x00107a00 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x80107a00 vaddr=0x00107a00] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80107a00 vaddr=0x00107a00] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80107a00 vaddr=0x00107a00] 0x0000054c: sb $a2, 0($t0)
@@ -9690,6 +9749,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x00107c00 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x80107c00 vaddr=0x00107c00] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80107c00 vaddr=0x00107c00] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80107c00 vaddr=0x00107c00] 0x0000054c: sb $a2, 0($t0)
@@ -9843,6 +9903,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x00107e00 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x80107e00 vaddr=0x00107e00] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80107e00 vaddr=0x00107e00] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80107e00 vaddr=0x00107e00] 0x0000054c: sb $a2, 0($t0)
@@ -9996,6 +10057,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x00108000 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x80108000 vaddr=0x00108000] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80108000 vaddr=0x00108000] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80108000 vaddr=0x00108000] 0x0000054c: sb $a2, 0($t0)
@@ -10149,6 +10211,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x00108200 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x80108200 vaddr=0x00108200] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80108200 vaddr=0x00108200] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80108200 vaddr=0x00108200] 0x0000054c: sb $a2, 0($t0)
@@ -10302,6 +10365,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x00108400 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x80108400 vaddr=0x00108400] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80108400 vaddr=0x00108400] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80108400 vaddr=0x00108400] 0x0000054c: sb $a2, 0($t0)
@@ -10455,6 +10519,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x00108600 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x80108600 vaddr=0x00108600] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80108600 vaddr=0x00108600] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80108600 vaddr=0x00108600] 0x0000054c: sb $a2, 0($t0)
@@ -10608,6 +10673,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x00108800 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x80108800 vaddr=0x00108800] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80108800 vaddr=0x00108800] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80108800 vaddr=0x00108800] 0x0000054c: sb $a2, 0($t0)
@@ -10761,6 +10827,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x00108a00 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x80108a00 vaddr=0x00108a00] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80108a00 vaddr=0x00108a00] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80108a00 vaddr=0x00108a00] 0x0000054c: sb $a2, 0($t0)
@@ -10914,6 +10981,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x00108c00 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x80108c00 vaddr=0x00108c00] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80108c00 vaddr=0x00108c00] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80108c00 vaddr=0x00108c00] 0x0000054c: sb $a2, 0($t0)
@@ -11067,6 +11135,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x00108e00 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x80108e00 vaddr=0x00108e00] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80108e00 vaddr=0x00108e00] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80108e00 vaddr=0x00108e00] 0x0000054c: sb $a2, 0($t0)
@@ -11220,6 +11289,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x00109000 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x80109000 vaddr=0x00109000] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80109000 vaddr=0x00109000] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80109000 vaddr=0x00109000] 0x0000054c: sb $a2, 0($t0)
@@ -11373,6 +11443,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x00109200 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x80109200 vaddr=0x00109200] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80109200 vaddr=0x00109200] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80109200 vaddr=0x00109200] 0x0000054c: sb $a2, 0($t0)
@@ -11526,6 +11597,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x00109400 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x80109400 vaddr=0x00109400] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80109400 vaddr=0x00109400] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80109400 vaddr=0x00109400] 0x0000054c: sb $a2, 0($t0)
@@ -11679,6 +11751,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x00109600 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x80109600 vaddr=0x00109600] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80109600 vaddr=0x00109600] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80109600 vaddr=0x00109600] 0x0000054c: sb $a2, 0($t0)
@@ -11832,6 +11905,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x00109800 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x80109800 vaddr=0x00109800] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80109800 vaddr=0x00109800] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80109800 vaddr=0x00109800] 0x0000054c: sb $a2, 0($t0)
@@ -11985,6 +12059,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x00109a00 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x80109a00 vaddr=0x00109a00] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80109a00 vaddr=0x00109a00] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80109a00 vaddr=0x00109a00] 0x0000054c: sb $a2, 0($t0)
@@ -12138,6 +12213,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x00109c00 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x80109c00 vaddr=0x00109c00] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80109c00 vaddr=0x00109c00] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80109c00 vaddr=0x00109c00] 0x0000054c: sb $a2, 0($t0)
@@ -12291,6 +12367,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x00109e00 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x80109e00 vaddr=0x00109e00] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80109e00 vaddr=0x00109e00] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x80109e00 vaddr=0x00109e00] 0x0000054c: sb $a2, 0($t0)
@@ -12444,6 +12521,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x0010a000 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x8010a000 vaddr=0x0010a000] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x8010a000 vaddr=0x0010a000] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x8010a000 vaddr=0x0010a000] 0x0000054c: sb $a2, 0($t0)
@@ -12597,6 +12675,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x0010a200 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x8010a200 vaddr=0x0010a200] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x8010a200 vaddr=0x0010a200] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x8010a200 vaddr=0x0010a200] 0x0000054c: sb $a2, 0($t0)
@@ -12750,6 +12829,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x0010a400 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x8010a400 vaddr=0x0010a400] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x8010a400 vaddr=0x0010a400] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x8010a400 vaddr=0x0010a400] 0x0000054c: sb $a2, 0($t0)
@@ -12903,6 +12983,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x0010a600 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x8010a600 vaddr=0x0010a600] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x8010a600 vaddr=0x0010a600] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x8010a600 vaddr=0x0010a600] 0x0000054c: sb $a2, 0($t0)
@@ -13056,6 +13137,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x0010a800 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x8010a800 vaddr=0x0010a800] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x8010a800 vaddr=0x0010a800] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x8010a800 vaddr=0x0010a800] 0x0000054c: sb $a2, 0($t0)
@@ -13209,6 +13291,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x0010aa00 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x8010aa00 vaddr=0x0010aa00] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x8010aa00 vaddr=0x0010aa00] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x8010aa00 vaddr=0x0010aa00] 0x0000054c: sb $a2, 0($t0)
@@ -13362,6 +13445,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x0010ac00 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x8010ac00 vaddr=0x0010ac00] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x8010ac00 vaddr=0x0010ac00] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x8010ac00 vaddr=0x0010ac00] 0x0000054c: sb $a2, 0($t0)
@@ -13515,6 +13599,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x0010ae00 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x8010ae00 vaddr=0x0010ae00] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x8010ae00 vaddr=0x0010ae00] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x8010ae00 vaddr=0x0010ae00] 0x0000054c: sb $a2, 0($t0)
@@ -13668,6 +13753,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x0010b000 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x8010b000 vaddr=0x0010b000] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x8010b000 vaddr=0x0010b000] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x8010b000 vaddr=0x0010b000] 0x0000054c: sb $a2, 0($t0)
@@ -13821,6 +13907,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x0010b200 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x8010b200 vaddr=0x0010b200] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x8010b200 vaddr=0x0010b200] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x8010b200 vaddr=0x0010b200] 0x0000054c: sb $a2, 0($t0)
@@ -13974,6 +14061,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x0010b400 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x8010b400 vaddr=0x0010b400] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x8010b400 vaddr=0x0010b400] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x8010b400 vaddr=0x0010b400] 0x0000054c: sb $a2, 0($t0)
@@ -14127,6 +14215,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x0010b600 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x8010b600 vaddr=0x0010b600] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x8010b600 vaddr=0x0010b600] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x8010b600 vaddr=0x0010b600] 0x0000054c: sb $a2, 0($t0)
@@ -14280,6 +14369,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x0010b800 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x8010b800 vaddr=0x0010b800] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x8010b800 vaddr=0x0010b800] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x8010b800 vaddr=0x0010b800] 0x0000054c: sb $a2, 0($t0)
@@ -14433,6 +14523,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x0010ba00 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x8010ba00 vaddr=0x0010ba00] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x8010ba00 vaddr=0x0010ba00] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x8010ba00 vaddr=0x0010ba00] 0x0000054c: sb $a2, 0($t0)
@@ -14586,6 +14677,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x0010bc00 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x8010bc00 vaddr=0x0010bc00] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x8010bc00 vaddr=0x0010bc00] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x8010bc00 vaddr=0x0010bc00] 0x0000054c: sb $a2, 0($t0)
@@ -14739,6 +14831,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x0010be00 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x8010be00 vaddr=0x0010be00] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x8010be00 vaddr=0x0010be00] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x8010be00 vaddr=0x0010be00] 0x0000054c: sb $a2, 0($t0)
@@ -14892,6 +14985,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x0010c000 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x8010c000 vaddr=0x0010c000] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x8010c000 vaddr=0x0010c000] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x8010c000 vaddr=0x0010c000] 0x0000054c: sb $a2, 0($t0)
@@ -15045,6 +15139,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x0010c200 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x8010c200 vaddr=0x0010c200] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x8010c200 vaddr=0x0010c200] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x8010c200 vaddr=0x0010c200] 0x0000054c: sb $a2, 0($t0)
@@ -15198,6 +15293,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x0010c400 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x8010c400 vaddr=0x0010c400] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x8010c400 vaddr=0x0010c400] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x8010c400 vaddr=0x0010c400] 0x0000054c: sb $a2, 0($t0)
@@ -15351,6 +15447,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x0010c600 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x8010c600 vaddr=0x0010c600] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x8010c600 vaddr=0x0010c600] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x8010c600 vaddr=0x0010c600] 0x0000054c: sb $a2, 0($t0)
@@ -15504,6 +15601,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x0010c800 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x8010c800 vaddr=0x0010c800] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x8010c800 vaddr=0x0010c800] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x8010c800 vaddr=0x0010c800] 0x0000054c: sb $a2, 0($t0)
@@ -15657,6 +15755,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x0010ca00 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x8010ca00 vaddr=0x0010ca00] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x8010ca00 vaddr=0x0010ca00] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x8010ca00 vaddr=0x0010ca00] 0x0000054c: sb $a2, 0($t0)
@@ -15810,6 +15909,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x0010cc00 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x8010cc00 vaddr=0x0010cc00] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x8010cc00 vaddr=0x0010cc00] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x8010cc00 vaddr=0x0010cc00] 0x0000054c: sb $a2, 0($t0)
@@ -15963,6 +16063,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x0010ce00 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x8010ce00 vaddr=0x0010ce00] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x8010ce00 vaddr=0x0010ce00] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x8010ce00 vaddr=0x0010ce00] 0x0000054c: sb $a2, 0($t0)
@@ -16116,6 +16217,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x0010d000 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x8010d000 vaddr=0x0010d000] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x8010d000 vaddr=0x0010d000] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x8010d000 vaddr=0x0010d000] 0x0000054c: sb $a2, 0($t0)
@@ -16269,6 +16371,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x0010d200 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x8010d200 vaddr=0x0010d200] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x8010d200 vaddr=0x0010d200] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x8010d200 vaddr=0x0010d200] 0x0000054c: sb $a2, 0($t0)
@@ -16422,6 +16525,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x0010d400 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x8010d400 vaddr=0x0010d400] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x8010d400 vaddr=0x0010d400] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x8010d400 vaddr=0x0010d400] 0x0000054c: sb $a2, 0($t0)
@@ -16575,6 +16679,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x0010d600 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x8010d600 vaddr=0x0010d600] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x8010d600 vaddr=0x0010d600] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x8010d600 vaddr=0x0010d600] 0x0000054c: sb $a2, 0($t0)
@@ -16728,6 +16833,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x0010d800 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x8010d800 vaddr=0x0010d800] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x8010d800 vaddr=0x0010d800] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x8010d800 vaddr=0x0010d800] 0x0000054c: sb $a2, 0($t0)
@@ -16881,6 +16987,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x0010da00 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x8010da00 vaddr=0x0010da00] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x8010da00 vaddr=0x0010da00] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x8010da00 vaddr=0x0010da00] 0x0000054c: sb $a2, 0($t0)
@@ -17034,6 +17141,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x0010dc00 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x8010dc00 vaddr=0x0010dc00] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x8010dc00 vaddr=0x0010dc00] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x8010dc00 vaddr=0x0010dc00] 0x0000054c: sb $a2, 0($t0)
@@ -17187,6 +17295,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x0010de00 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x8010de00 vaddr=0x0010de00] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x8010de00 vaddr=0x0010de00] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x8010de00 vaddr=0x0010de00] 0x0000054c: sb $a2, 0($t0)
@@ -17340,6 +17449,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x0010e000 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x8010e000 vaddr=0x0010e000] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x8010e000 vaddr=0x0010e000] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x8010e000 vaddr=0x0010e000] 0x0000054c: sb $a2, 0($t0)
@@ -17493,6 +17603,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x0010e200 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x8010e200 vaddr=0x0010e200] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x8010e200 vaddr=0x0010e200] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x8010e200 vaddr=0x0010e200] 0x0000054c: sb $a2, 0($t0)
@@ -17646,6 +17757,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x0010e400 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x8010e400 vaddr=0x0010e400] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x8010e400 vaddr=0x0010e400] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x8010e400 vaddr=0x0010e400] 0x0000054c: sb $a2, 0($t0)
@@ -17799,6 +17911,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x0010e600 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x8010e600 vaddr=0x0010e600] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x8010e600 vaddr=0x0010e600] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x8010e600 vaddr=0x0010e600] 0x0000054c: sb $a2, 0($t0)
@@ -17952,6 +18065,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x0010e800 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x8010e800 vaddr=0x0010e800] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x8010e800 vaddr=0x0010e800] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x8010e800 vaddr=0x0010e800] 0x0000054c: sb $a2, 0($t0)
@@ -18105,6 +18219,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x0010ea00 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x8010ea00 vaddr=0x0010ea00] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x8010ea00 vaddr=0x0010ea00] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x8010ea00 vaddr=0x0010ea00] 0x0000054c: sb $a2, 0($t0)
@@ -18258,6 +18373,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x0010ec00 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x8010ec00 vaddr=0x0010ec00] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x8010ec00 vaddr=0x0010ec00] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x8010ec00 vaddr=0x0010ec00] 0x0000054c: sb $a2, 0($t0)
@@ -18411,6 +18527,7 @@
 [core 1.0] 0x00000548: addiu $t0, $t0, 512
 [core 1.0] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] mem access 0x0010ee00 misses cache line 2
+[core 1.0] upgrades existing prefetch
 [core 1.0] [stalling on cache line 2 paddr=0x8010ee00 vaddr=0x0010ee00] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x8010ee00 vaddr=0x0010ee00] 0x0000054c: sb $a2, 0($t0)
 [core 1.0] [stalling on cache line 2 paddr=0x8010ee00 vaddr=0x0010ee00] 0x0000054c: sb $a2, 0($t0)
