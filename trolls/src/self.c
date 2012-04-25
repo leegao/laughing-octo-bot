@@ -7,7 +7,7 @@
 
 #include "flamewar.h"
 
-#define cache_align(x) ((x) & 0xffffff00)
+#define cache_align(x) (((int)x) & 0xffffff00)
 
 /* Honest Bot. Fills its own half of memory using cores 0 and 1, 2, 3
  * Uses a simple loop with a random start address.
@@ -17,9 +17,9 @@ void __start(int core_id, int num_crashes, unsigned char link) {
 	// core1 = line 1
 	// at a rate of (247/248)^175 \approx 0.5, we can 'safely' be in troll mode
 	// approximately 175 cycles if we detect the taunt array on one of the lines
-	register char *ptr = (char *)(HOME_DATA_SEGMENT) + (core_id&1)*CACHE_LINE+1;
+	register char *ptr = (char *)(HOME_DATA_SEGMENT) + (core_id&1)*CACHE_LINE;
 	prefetch(ptr);
-	register int VADDR = (int)(ptr-(rdftag(ptr)-1));
+	register int HI = rdftag(ptr)>=HIMEM ? HIMEM : 0;
 	register int i = 0;
 	register int k = ptr[0] == link;
 	if (k){
@@ -32,7 +32,7 @@ void __start(int core_id, int num_crashes, unsigned char link) {
 					ptr += 2*CACHE_LINE;
 					i = 1;
 					ptr[0] = link;
-					prefetch(ptr+2*CACHE_LINE);
+					prefetch(ptr+2*CACHE_LINE+1);
 				}
 			}
 		} else {
@@ -49,60 +49,78 @@ void __start(int core_id, int num_crashes, unsigned char link) {
 			}
 		}
 	} else {
-		if (core_id < 2){
+		if (!core_id){
+			while(1){
+				ptr[i] = link;
+				ptr[20+i] = link;
+				ptr[40+i++] = link;
+				if (i == 16){
+					ptr += 2*CACHE_LINE;
+					i = 1;
+					ptr[0] = link;
+					prefetch(ptr+2*CACHE_LINE+1);
+				}
+			}
+		} else if (core_id == 1){
 
 			while(1){
 				ptr[i] = link;
 				ptr[20+i] = link;
 				ptr[40+i++] = link;
-				if (i == 14){
+				if (i == 16){
 					register char x = ptr[120];
-					if (core_id == 1 && x == link){
+					if (x == link){
 						for (k = TAUNT_SIZE/2; k < TAUNT_SIZE; k++) {
 							if (HOME_STATUS->taunt[k] >= 0) {
-							  hammer(HOME_STATUS->taunt[k]);
+								hammer(HOME_STATUS->taunt[k]);
 							}
 						}
 					}
 					ptr += 2*CACHE_LINE;
-					i = 1;
+					i = 0;
 					ptr[0] = link;
-					prefetch(ptr+2*CACHE_LINE);
+					prefetch(ptr+2*CACHE_LINE+1);
+				}
+			}
+		} else if (core_id == 2){
+			//register unsigned long long stalls = 0;
+			//register char* where = ptr;
+			while(1){
+				ptr[60+i] = link;
+				ptr[71+i] = link;
+				ptr[82+i] = link;
+				ptr[100+i++] = link;
+				if (i==11){
+					i = 0;
+					register char* tag = (char*)rdftag(ptr);
+					ptr = tag ? cache_align(tag)-HI : ptr + 2*CACHE_LINE;
 				}
 			}
 		} else {
 			//ptr = (char *)(HOME_DATA_SEGMENT) + (core_id&1)*CACHE_LINE;
 			//printf("%x\n",VADDR|(int)ptr);
 			k = 0;
-			register unsigned long long stalls = 0;
-			register char* where = (char*)(VADDR |(int)ptr);
+			//register unsigned long long stalls = 0;
+			//register char* where = (char*)(VADDR |(int)ptr);
 			while(1){
 				ptr[60+i] = link;
 				ptr[71+i] = link;
 				ptr[82+i] = link;
 				ptr[100+i++] = link;
 				if (i==10){
-					char* tag = (char*)rdftag(where);
-					ptr = tag ? tag : ptr + 2*CACHE_LINE;
-					//ptr = ptr + 2*CACHE_LINE;// + 2*CACHE_LINE;
 					i = 0;
-					if (core_id == 3 && k++ == 10){
-
-						// check stall performance
-//						register unsigned long long delta = rdperf(PERF_CSC)-stalls;
-//						stalls += delta;
-//						if (delta > 400){
-//
-//						}
-						// go into taunt checking mode
+					if (k++ == 20){
 						ptr[120] = link;
 						for (k = 0; k < TAUNT_SIZE/2; k++) {
 							if (HOME_STATUS->taunt[k] >= 0) {
-							  hammer(HOME_STATUS->taunt[k]);
+								hammer(HOME_STATUS->taunt[k]);
 							}
 						}
 						k = 0;
 					}
+					register char* tag = (char*)rdftag(ptr);
+					//printf("%x\n",rdftag(ptr));
+					ptr = tag ? cache_align(tag)-HI : ptr + 2*CACHE_LINE;
 				}
 			}
 		}
