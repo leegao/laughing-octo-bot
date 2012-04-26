@@ -111,13 +111,13 @@
 [core 1.3] 0x000004d4: lb $v1, 0($t1)
 [core 1.3] mem access 0x00100100 hits cache line 3
 [core 1.3] 0x000004d8: sll $0, $0, 0
-[core 1.3] 0x000004dc: beq $v1, $a2, 0x00000900
+[core 1.3] 0x000004dc: beq $v1, $a2, 0x000008fc
 [core 1.3] 0x000004e0: slti $v0, $a1, 2
 [core 1.3] 0x000004e4: bne $a1, $0, 0x0000055c
 [core 1.3] 0x000004e8: addiu $v0, $0, 1
-[core 1.3] 0x0000055c: beq $a1, $v0, 0x00000834
+[core 1.3] 0x0000055c: beq $a1, $v0, 0x00000830
 [core 1.3] 0x00000560: addiu $v0, $0, 2
-[core 1.3] 0x00000564: beq $a1, $v0, 0x0000078c
+[core 1.3] 0x00000564: beq $a1, $v0, 0x00000788
 [core 1.3] 0x00000568: addu $t0, $0, $0
 [core 1.3] 0x0000056c: sll $a2, $a2, 24
 [core 1.3] 0x00000570: sra $a2, $a2, 24
@@ -5107,10 +5107,10 @@
 [core 1.3] 0x00000648: srl $v0, $v0, 1
 [core 1.3] 0x0000064c: sll $v1, $v0, 1
 [core 1.3] 0x00000650: addu $v1, $v1, $v0
-[core 1.3] 0x00000654: bne $t0, $v1, 0x00000674
-[core 1.3] 0x00000658: addiu $v0, $0, 74
-[core 1.3] 0x00000674: bne $t0, $v0, 0x000005ac
-[core 1.3] 0x00000678: addu $a1, $0, $0
+[core 1.3] 0x00000654: bne $t0, $v1, 0x00000670
+[core 1.3] 0x00000658: addiu $v0, $0, 60
+[core 1.3] 0x00000670: bne $t0, $v0, 0x000005ac
+[core 1.3] 0x00000674: addu $a1, $0, $0
 [core 1.3] 0x000005ac: addu $a0, $t1, $0
 [core 1.3] 0x000005b0: addiu $v0, $0, 18
 [core 1.3] 0x000005b4: syscall
@@ -10101,10 +10101,10 @@
 [core 1.3] 0x00000648: srl $v0, $v0, 1
 [core 1.3] 0x0000064c: sll $v1, $v0, 1
 [core 1.3] 0x00000650: addu $v1, $v1, $v0
-[core 1.3] 0x00000654: bne $t0, $v1, 0x00000674
-[core 1.3] 0x00000658: addiu $v0, $0, 74
-[core 1.3] 0x00000674: bne $t0, $v0, 0x000005ac
-[core 1.3] 0x00000678: addu $a1, $0, $0
+[core 1.3] 0x00000654: bne $t0, $v1, 0x00000670
+[core 1.3] 0x00000658: addiu $v0, $0, 60
+[core 1.3] 0x00000670: bne $t0, $v0, 0x000005ac
+[core 1.3] 0x00000674: addu $a1, $0, $0
 [core 1.3] 0x000005ac: addu $a0, $t1, $0
 [core 1.3] 0x000005b0: addiu $v0, $0, 18
 [core 1.3] 0x000005b4: syscall
@@ -15096,16 +15096,17 @@
 [core 1.3] 0x00000648: srl $v0, $v0, 1
 [core 1.3] 0x0000064c: sll $v1, $v0, 1
 [core 1.3] 0x00000650: addu $v1, $v1, $v0
-[core 1.3] 0x00000654: bne $t0, $v1, 0x00000674
-[core 1.3] 0x00000658: addiu $v0, $0, 74
+[core 1.3] 0x00000654: bne $t0, $v1, 0x00000670
+[core 1.3] 0x00000658: addiu $v0, $0, 60
 [core 1.3] 0x0000065c: addiu $v0, $0, 11
 [core 1.3] 0x00000660: syscall
 [core 1.3] going into troll mode (setting taunt[159] = 3)
 [core 1.3] 0x00000664: addiu $v0, $0, 13
 [core 1.3] 0x00000668: syscall
 [core 1.3] retreats from troll mode (setting taunt[159] = -1)
-[core 1.3] 0x0000066c: j 0x000005ac
-[core 1.3] 0x00000670: addu $a1, $0, $0
+[core 1.3] 0x0000066c: addiu $v0, $0, 60
+[core 1.3] 0x00000670: bne $t0, $v0, 0x000005ac
+[core 1.3] 0x00000674: addu $a1, $0, $0
 [core 1.3] 0x000005ac: addu $a0, $t1, $0
 [core 1.3] 0x000005b0: addiu $v0, $0, 18
 [core 1.3] 0x000005b4: syscall
@@ -15128,7 +15129,6 @@
 [core 1.3] 0x00000584: addiu $a0, $a0, 1
 [core 1.3] 0x00000588: sb $a2, 100($v0)
 [core 1.3] mem access 0x00109d64 misses cache line 3
-[core 1.3] [stalling on cache line 3 paddr=0x80109d00 vaddr=0x00109d00] 0x00000588: sb $a2, 100($v0)
 [core 1.3] [stalling on cache line 3 paddr=0x80109d00 vaddr=0x00109d00] 0x00000588: sb $a2, 100($v0)
 [core 1.3] [stalling on cache line 3 paddr=0x80109d00 vaddr=0x00109d00] 0x00000588: sb $a2, 100($v0)
 [core 1.3] [stalling on cache line 3 paddr=0x80109d00 vaddr=0x00109d00] 0x00000588: sb $a2, 100($v0)

@@ -10,6 +10,23 @@
 //80000000                                   0x7fffffff
 #define cache_align(x) (((unsigned long)x) & 0x7fffff00)
 
+/*
+How we tested
+
+cd trolls
+make
+cd ..
+echo "s 100000" | ./flamewar -vvvv -d -t 20000 -s 1000 trolls/bin/self trolls/bin/noop > out
+cat out | grep "0\.0" > core0
+cat out | grep "0\.2" > core2
+cat out | grep "0\.1" > core1
+cat out | grep "0\.3" > core3
+cd trolls
+mipsel-linux-objdump -xdlS bin/self > ../self.asm
+cd ..
+
+*/
+
 /* Honest Bot. Fills its own half of memory using cores 0 and 1, 2, 3
  * Uses a simple loop with a random start address.*/
 void __start(int core_id, int num_crashes, unsigned char link) {
@@ -23,6 +40,7 @@ void __start(int core_id, int num_crashes, unsigned char link) {
 	register int i = 0;
 	register int k = ptr[0] == link;
 	if (k){
+        // If we segfault, optimistically hope that we've filled the lower half of memory for each cache line
 		if (core_id < 2){
 			while(1){
 				ptr[110+i] = link;
@@ -49,6 +67,8 @@ void __start(int core_id, int num_crashes, unsigned char link) {
 			}
 		}
 	} else {
+        // core 0 and core 2 fills as many lines as possible
+        // core 1 and 3 fills, then checks taunt, and finally core 3 may go on the offense
 		if (!core_id){
 			while(1){
 				ptr[i] = link;
@@ -91,7 +111,7 @@ void __start(int core_id, int num_crashes, unsigned char link) {
 				ptr[100+i++] = link;
 				if (i==11){
 					i = 0;
-					register unsigned int tag = cache_align(rdftag(ptr));
+					register unsigned int tag = cache_align(rdftag(ptr));// automatically sync up with the core 0
 					ptr = tag > HOME_DATA_START && tag < HOME_DATA_END ? tag: ptr + 2*CACHE_LINE;
 				}
 			}
@@ -114,9 +134,10 @@ void __start(int core_id, int num_crashes, unsigned char link) {
 						// do a simple attack on fbi
 						h++;
 						if (h % 3 == 0){
-							troll();
+							troll(); // this might buy us a bit of time
 							retreat();
-						} else if (h == 74) {
+						}
+                        if (h == 60) {
 							// actually do an attack
 							// check if rdctag(ptr|HIOLO) is in the taunt array, if not, fuck their odd cache line + 6*CACHELINE up
 							// otherwise just drop a simple rickroll
