@@ -7,12 +7,11 @@
 
 #include "flamewar.h"
 
-//80000000                         0x70000000
+//80000000                                   0x7fffffff
 #define cache_align(x) (((unsigned long)x) & 0x7fffff00)
 
 /* Honest Bot. Fills its own half of memory using cores 0 and 1, 2, 3
- * Uses a simple loop with a random start address.
- */
+ * Uses a simple loop with a random start address.*/
 void __start(int core_id, int num_crashes, unsigned char link) {
 	// core0 = line 0
 	// core1 = line 1
@@ -77,17 +76,6 @@ void __start(int core_id, int num_crashes, unsigned char link) {
 							}
 						}
 						prefetch(ptr+2*CACHE_LINE+1);
-//						for (k=0; k<20; k++){
-//							if(ptr[121] == link){
-//								puts("HELPING WITH DDOS");
-//								// help with ddos
-//								troll();
-//								for(k=0; k<250; k++)
-//									invalidate(OPPONENT_STATUS);
-//								retreat();
-//								puts("PHEW");
-//							}
-//						}
 					}
 					ptr += 2*CACHE_LINE;
 					i = 0;
@@ -135,7 +123,6 @@ void __start(int core_id, int num_crashes, unsigned char link) {
 							troll();
 							h = rdctag(OPPONENT_DATA_START|CACHE_LINE);
 							retreat();
-							//printf("%x, %x, %x\n",h,OPPONENT_STATUS, ((int)h - (int)OPPONENT_STATUS > 0) && ((int)h - (int)OPPONENT_STATUS < 255));
 							h = HIMEM|h;
 							if (h > OPPONENT_DATA_START){
 								troll();
@@ -148,12 +135,12 @@ void __start(int core_id, int num_crashes, unsigned char link) {
 								retreat();
 							} else if (((int)h - (int)OPPONENT_STATUS > 0) && ((int)h - (int)OPPONENT_STATUS < 255)) {
 								// he's checking his shit, rickroll on even lines
-								register unsigned char x = rand()&0x10;
+								register unsigned char x = rand()&0x7;
 								if (x == 1){
 									troll();
 									invalidate(h);
 									retreat();
-								} else {
+								} else if (x==0) {
 									troll();
 									h = rdctag(OPPONENT_DATA_START);
 									retreat();

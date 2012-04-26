@@ -114,7 +114,7 @@
 [core 1.0] 0x000004d4: lb $v1, 0($t1)
 [core 1.0] mem access 0x00100000 hits cache line 2
 [core 1.0] 0x000004d8: sll $0, $0, 0
-[core 1.0] 0x000004dc: beq $v1, $a2, 0x000008d4
+[core 1.0] 0x000004dc: beq $v1, $a2, 0x00000900
 [core 1.0] 0x000004e0: slti $v0, $a1, 2
 [core 1.0] 0x000004e4: bne $a1, $0, 0x0000055c
 [core 1.0] 0x000004e8: addiu $v0, $0, 1
