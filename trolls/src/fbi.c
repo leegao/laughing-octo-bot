@@ -13,6 +13,7 @@ void __start(int core_id, int num_crashes, unsigned char link) {
       for (i = 0; i < TAUNT_SIZE; i++) {
         if (HOME_STATUS->taunt[i] >= 0) {
 	      hammer(HOME_STATUS->taunt[i]);
+        	//printf("Saw %d\n", HOME_STATUS->taunt[i]);
         }
       }
     }

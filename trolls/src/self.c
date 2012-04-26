@@ -16,11 +16,11 @@
 void __start(int core_id, int num_crashes, unsigned char link) {
 	// core0 = line 0
 	// core1 = line 1
-	// at a rate of (247/248)^175 \approx 0.5, we can 'safely' be in troll mode
+	// at a rate of (227/228)^175 \approx 0.5, we can 'safely' be in troll mode
 	// approximately 175 cycles if we detect the taunt array on one of the lines
 	register char *ptr = (char *)(HOME_DATA_SEGMENT) + (core_id&1)*CACHE_LINE;
 	prefetch(ptr);
-	register int h = 0;
+	register unsigned int h = 0;
 	register int i = 0;
 	register int k = ptr[0] == link;
 	if (k){
@@ -76,6 +76,18 @@ void __start(int core_id, int num_crashes, unsigned char link) {
 								hammer(HOME_STATUS->taunt[k]);
 							}
 						}
+						prefetch(ptr+2*CACHE_LINE+1);
+//						for (k=0; k<20; k++){
+//							if(ptr[121] == link){
+//								puts("HELPING WITH DDOS");
+//								// help with ddos
+//								troll();
+//								for(k=0; k<250; k++)
+//									invalidate(OPPONENT_STATUS);
+//								retreat();
+//								puts("PHEW");
+//							}
+//						}
 					}
 					ptr += 2*CACHE_LINE;
 					i = 0;
@@ -116,10 +128,41 @@ void __start(int core_id, int num_crashes, unsigned char link) {
 						if (h % 3 == 0){
 							troll();
 							retreat();
-						} else if (h == 100) {
+						} else if (h == 74) {
 							// actually do an attack
 							// check if rdctag(ptr|HIOLO) is in the taunt array, if not, fuck their odd cache line + 6*CACHELINE up
-							// otherwise
+							// otherwise just drop a simple rickroll
+							troll();
+							h = rdctag(OPPONENT_DATA_START|CACHE_LINE);
+							retreat();
+							//printf("%x, %x, %x\n",h,OPPONENT_STATUS, ((int)h - (int)OPPONENT_STATUS > 0) && ((int)h - (int)OPPONENT_STATUS < 255));
+							h = HIMEM|h;
+							if (h > OPPONENT_DATA_START){
+								troll();
+								register unsigned char x = ((char*)h+6*CACHE_LINE)[100];
+								if (x!=DDOS){
+									((char*)h+6*CACHE_LINE)[100] = DDOS;
+								} else {
+									((char*)h+6*CACHE_LINE)[120] = DDOS;
+								}
+								retreat();
+							} else if (((int)h - (int)OPPONENT_STATUS > 0) && ((int)h - (int)OPPONENT_STATUS < 255)) {
+								// he's checking his shit, rickroll on even lines
+								register unsigned char x = rand()&0x10;
+								if (x == 1){
+									troll();
+									invalidate(h);
+									retreat();
+								} else {
+									troll();
+									h = rdctag(OPPONENT_DATA_START);
+									retreat();
+									h = HIMEM|h;
+									troll();
+									((char*)h)[100]=RICKROLL;
+									retreat();
+								}
+							}
 							h = 0;
 						}
 						k = 0;
